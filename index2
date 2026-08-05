@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+<title>CyberQuest - Battle Isle</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230d1b3d'/%3E%3Cstop offset='100%25' stop-color='%23080c1f'/%3E%3C/linearGradient%3E%3ClinearGradient id='swordGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3fb0'/%3E%3Cstop offset='100%25' stop-color='%232fb0ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='shieldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3fb0'/%3E%3Cstop offset='100%25' stop-color='%239b4bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='110' fill='url(%23bgGrad)'/%3E%3Ccircle cx='256' cy='256' r='180' fill='none' stroke='%232f3f72' stroke-width='4' opacity='0.6'/%3E%3Ccircle cx='256' cy='256' r='220' fill='none' stroke='%232f3f72' stroke-width='2' opacity='0.4'/%3E%3Ccircle cx='256' cy='256' r='140' fill='none' stroke='%232f3f72' stroke-width='2' opacity='0.4'/%3E%3Cpath d='M 150 140 L 362 140 L 362 240 C 362 320 290 380 256 410 C 222 380 150 320 150 240 Z' fill='none' stroke='url(%23shieldGrad)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='256' y1='160' x2='256' y2='330' stroke='url(%23swordGrad)' stroke-width='14' stroke-linecap='round'/%3E%3Cline x1='256' y1='190' x2='256' y2='300' stroke='%23ffffff' stroke-width='4' stroke-opacity='0.3' stroke-linecap='round'/%3E%3Cline x1='190' y1='240' x2='322' y2='240' stroke='%23ff3fb0' stroke-width='10' stroke-linecap='round'/%3E%3Cline x1='182' y1='240' x2='190' y2='240' stroke='%232fb0ff' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='322' y1='240' x2='330' y2='240' stroke='%232fb0ff' stroke-width='6' stroke-linecap='round'/%3E%3Crect x='248' y='340' width='16' height='30' rx='4' fill='%232fb0ff'/%3E%3Ccircle cx='256' cy='378' r='10' fill='%232fb0ff'/%3E%3Ctext x='256' y='420' font-family='Anton, sans-serif' font-size='36' font-weight='bold' fill='%23ff3fb0' text-anchor='middle' letter-spacing='4'%3ECQ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0d1b3d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- MANIFEST intégré avec l'icône -->
+<script>
+  const manifestData = {
+    "id": "index.html", "name": "CyberQuest - Battle Isle", "short_name": "CyberQuest",
+    "description": "Reconquiers Battle Isle face a l'IA NEXUS.", "lang": "fr", "categories": ["education", "games"],
+    "start_url": "index.html", "scope": ".", "display": "standalone", "orientation": "landscape-primary",
+    "background_color": "#0d1b3d", "theme_color": "#0d1b3d",
+    "icons": [
+      { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230d1b3d'/%3E%3Cstop offset='100%25' stop-color='%23080c1f'/%3E%3C/linearGradient%3E%3ClinearGradient id='swordGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3fb0'/%3E%3Cstop offset='100%25' stop-color='%232fb0ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='shieldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3fb0'/%3E%3Cstop offset='100%25' stop-color='%239b4bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='110' fill='url(%23bgGrad)'/%3E%3Ccircle cx='256' cy='256' r='180' fill='none' stroke='%232f3f72' stroke-width='4' opacity='0.6'/%3E%3Ccircle cx='256' cy='256' r='220' fill='none' stroke='%232f3f72' stroke-width='2' opacity='0.4'/%3E%3Ccircle cx='256' cy='256' r='140' fill='none' stroke='%232f3f72' stroke-width='2' opacity='0.4'/%3E%3Cpath d='M 150 140 L 362 140 L 362 240 C 362 320 290 380 256 410 C 222 380 150 320 150 240 Z' fill='none' stroke='url(%23shieldGrad)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='256' y1='160' x2='256' y2='330' stroke='url(%23swordGrad)' stroke-width='14' stroke-linecap='round'/%3E%3Cline x1='256' y1='190' x2='256' y2='300' stroke='%23ffffff' stroke-width='4' stroke-opacity='0.3' stroke-linecap='round'/%3E%3Cline x1='190' y1='240' x2='322' y2='240' stroke='%23ff3fb0' stroke-width='10' stroke-linecap='round'/%3E%3Cline x1='182' y1='240' x2='190' y2='240' stroke='%232fb0ff' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='322' y1='240' x2='330' y2='240' stroke='%232fb0ff' stroke-width='6' stroke-linecap='round'/%3E%3Crect x='248' y='340' width='16' height='30' rx='4' fill='%232fb0ff'/%3E%3Ccircle cx='256' cy='378' r='10' fill='%232fb0ff'/%3E%3Ctext x='256' y='420' font-family='Anton, sans-serif' font-size='36' font-weight='bold' fill='%23ff3fb0' text-anchor='middle' letter-spacing='4'%3ECQ%3C/text%3E%3C/svg%3E", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+      { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230d1b3d'/%3E%3Cstop offset='100%25' stop-color='%23080c1f'/%3E%3C/linearGradient%3E%3ClinearGradient id='swordGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3fb0'/%3E%3Cstop offset='100%25' stop-color='%232fb0ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='shieldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3fb0'/%3E%3Cstop offset='100%25' stop-color='%239b4bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='110' fill='url(%23bgGrad)'/%3E%3Ccircle cx='256' cy='256' r='180' fill='none' stroke='%232f3f72' stroke-width='4' opacity='0.6'/%3E%3Ccircle cx='256' cy='256' r='220' fill='none' stroke='%232f3f72' stroke-width='2' opacity='0.4'/%3E%3Ccircle cx='256' cy='256' r='140' fill='none' stroke='%232f3f72' stroke-width='2' opacity='0.4'/%3E%3Cpath d='M 150 140 L 362 140 L 362 240 C 362 320 290 380 256 410 C 222 380 150 320 150 240 Z' fill='none' stroke='url(%23shieldGrad)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='256' y1='160' x2='256' y2='330' stroke='url(%23swordGrad)' stroke-width='14' stroke-linecap='round'/%3E%3Cline x1='256' y1='190' x2='256' y2='300' stroke='%23ffffff' stroke-width='4' stroke-opacity='0.3' stroke-linecap='round'/%3E%3Cline x1='190' y1='240' x2='322' y2='240' stroke='%23ff3fb0' stroke-width='10' stroke-linecap='round'/%3E%3Cline x1='182' y1='240' x2='190' y2='240' stroke='%232fb0ff' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='322' y1='240' x2='330' y2='240' stroke='%232fb0ff' stroke-width='6' stroke-linecap='round'/%3E%3Crect x='248' y='340' width='16' height='30' rx='4' fill='%232fb0ff'/%3E%3Ccircle cx='256' cy='378' r='10' fill='%232fb0ff'/%3E%3Ctext x='256' y='420' font-family='Anton, sans-serif' font-size='36' font-weight='bold' fill='%23ff3fb0' text-anchor='middle' letter-spacing='4'%3ECQ%3C/text%3E%3C/svg%3E", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(manifestData)], {type: 'application/json'});
+  const manifestURL = URL.createObjectURL(blob);
+  const link = document.createElement('link'); link.rel = 'manifest'; link.href = manifestURL; document.head.appendChild(link);
+</script>
+
+<style>
+:root{
+  --bg:#0d1b3d;--panel:#16244c;--line:#2f3f72;
+  --cyan:#2fb0ff;--magenta:#ff3fb0;--purple:#9b4bff;--amber:#ff9d1f;
+  --green:#3ce68a;--red:#ff4d5e;
+  --txt:#eef4ff;--dim:#8fa3d9;--dim2:#4a5a96;
+  --fd:'Anton',sans-serif;--fm:'Rubik',sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;touch-action:none;background:var(--bg);font-family:var(--fm);color:var(--txt);-webkit-tap-highlight-color:transparent}
+canvas{display:block}
+#vignette{position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(ellipse at center,rgba(13,27,61,0) 35%,rgba(8,12,31,.85) 100%)}
+#scan{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:.3;background:repeating-linear-gradient(180deg,rgba(47,176,255,0) 0px,rgba(47,176,255,0) 2px,rgba(47,176,255,.015) 3px,rgba(47,176,255,0) 4px)}
+#loading{position:fixed;inset:0;z-index:500;background:#080c1f;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.load-logo{font-family:var(--fd);font-size:26px;letter-spacing:4px;color:var(--cyan);margin-bottom:10px;text-shadow:0 0 20px rgba(47,176,255,.8)}.load-logo b{color:var(--magenta);text-shadow:0 0 20px rgba(255,63,176,.8)}
+.load-sub{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:var(--dim);margin-bottom:20px;text-transform:uppercase}
+.load-bar{width:240px;height:8px;background:#141b3d;border:1px solid var(--line);border-radius:4px;overflow:hidden;box-shadow:0 0 16px rgba(47,176,255,.15) inset}
+.load-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--magenta));border-radius:4px;animation:loadpulse 1.6s ease-in-out infinite}
+@keyframes loadpulse{0%{width:0%}50%{width:90%}100%{width:100%}}
+.load-err{color:var(--red);font-family:var(--fm);font-size:11px;margin-top:14px;text-align:center;max-width:300px;display:none}
+
+#tb{position:absolute;top:0;left:0;right:0;height:64px;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:linear-gradient(180deg,rgba(8,12,31,.98),rgba(8,12,31,.7) 60%,transparent);pointer-events:none;border-bottom:1px solid rgba(47,176,255,.1)}
+.brand{font-family:var(--fd);font-weight:400;font-size:16px;letter-spacing:2px;color:var(--cyan);text-shadow:0 0 12px rgba(47,176,255,.6)}.brand b{color:var(--magenta);text-shadow:0 0 12px rgba(255,63,176,.6)}
+.tbr{display:flex;gap:10px;pointer-events:auto}
+.tb{font-family:var(--fm);font-size:10px;font-weight:800;letter-spacing:.08em;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--txt);padding:8px 16px;border-radius:6px;cursor:pointer;transition:.15s ease;text-transform:uppercase}
+.tb:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(47,176,255,.2);transform:scale(1.02)}
+.tb:active{transform:scale(.98)}
+.tb:disabled{opacity:.35;cursor:default}
+#st{position:absolute;top:72px;left:20px;z-index:10;font-family:var(--fm);font-size:11px;color:var(--cyan);max-width:340px;line-height:1.4;text-shadow:0 2px 4px rgba(0,0,0,.8)}
+
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(8,12,31,.95);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+.box{width:100%;max-width:460px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+.ot{font-family:var(--fd);font-size:18px;letter-spacing:2px;color:var(--cyan);margin-bottom:8px;text-shadow:0 0 14px rgba(47,176,255,.4)}.ot b{color:var(--magenta)}
+.os{font-size:12px;color:var(--dim);font-family:var(--fm);margin-bottom:16px;line-height:1.5}
+.tabs{display:flex;margin-bottom:16px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02)}
+.tab{flex:1;padding:12px 0;text-align:center;font-family:var(--fm);font-size:11px;font-weight:700;color:var(--dim);cursor:pointer;background:transparent;border:none;transition:.15s}
+.tab.sel{background:linear-gradient(135deg,var(--cyan),var(--magenta));color:#0d1b3d;box-shadow:0 0 20px rgba(47,176,255,.3) inset}
+.tp{display:none}.tp.show{display:block}
+.ol{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--dim);display:block;margin:9px 0 4px;text-transform:uppercase}
+.oi{width:100%;padding:12px;background:#0d1b3d;border:1px solid var(--line);border-radius:6px;color:#fff;font-size:13px;font-family:var(--fm);margin-bottom:4px;transition:.15s}
+.oi:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(47,176,255,.15)}
+.op{width:100%;padding:14px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#0d1b3d;border:none;border-radius:8px;font-family:var(--fm);font-size:13px;font-weight:800;cursor:pointer;margin-top:12px;box-shadow:0 4px 12px rgba(47,176,255,.3);transition:.15s;text-transform:uppercase}
+.op:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(47,176,255,.4)}
+.op:active{transform:translateY(1px);box-shadow:0 2px 8px rgba(47,176,255,.3)}
+.oe{color:var(--red);font-size:11px;font-family:var(--fm);margin-top:5px;min-height:13px}
+.opb{display:flex;gap:8px;margin-bottom:4px}
+.pb{flex:1;padding:10px;border:2px solid var(--line);border-radius:6px;color:var(--dim);font-family:var(--fm);font-size:12px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.02);transition:.15s}
+.pb.sel{border-color:var(--cyan);color:var(--cyan);background:rgba(47,176,255,.08);box-shadow:0 0 14px rgba(47,176,255,.15)}
+
+#adminOv{position:fixed;inset:0;z-index:200;background:#0d1b3d;overflow-y:auto;padding:16px;display:none}
+#cfgOv{position:fixed;inset:0;z-index:300;background:#0d1b3d;overflow-y:auto;padding:18px;display:none}
+#lockerOv{position:fixed;inset:0;z-index:400;background:rgba(8,12,31,.95);backdrop-filter:blur(8px);display:none;flex-direction:column;align-items:center;padding:20px;overflow-y:auto}
+.locker-title{font-family:var(--fd);font-size:22px;letter-spacing:4px;color:var(--cyan);margin-bottom:20px;text-shadow:0 0 16px rgba(47,176,255,.6)}
+.locker-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:16px;width:100%;max-width:900px}
+.skin-card{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.skin-card:hover{transform:scale(1.05);border-color:var(--cyan);box-shadow:0 4px 16px rgba(47,176,255,.2)}
+.skin-card.selected{border-color:var(--magenta);box-shadow:0 0 24px rgba(255,63,176,.4)}
+.skin-card .skin-3d-preview{height:120px;display:flex;align-items:center;justify-content:center;font-size:64px;margin-bottom:8px}
+.skin-name{font-family:var(--fm);font-size:12px;font-weight:700;color:var(--txt);display:block}
+.skin-rarity{font-family:var(--fm);font-size:9px;font-weight:600;text-transform:uppercase;margin-top:4px;display:block}
+.skin-common{color:#8fa3d9}
+.skin-uncommon{color:#3ce68a}
+.skin-epic{color:#9b4bff}
+.skin-legendary{color:#ff9d1f}
+.skin-mythic{color:#ff4d5e}
+#lockerClose{font-family:var(--fm);font-size:11px;font-weight:700;background:rgba(255,255,255,.1);color:var(--txt);border:1px solid var(--line);padding:10px 24px;border-radius:8px;cursor:pointer;margin-top:20px}
+#lockerClose:hover{border-color:var(--cyan);background:rgba(47,176,255,.1)}
+
+#vrToggleBar{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:20;display:none;align-items:center;gap:12px;background:rgba(8,12,31,.9);border:1px solid var(--line);border-radius:12px;padding:10px 20px;pointer-events:auto}
+#vrToggleBar .vt-label{font-family:var(--fm);font-size:10px;color:var(--dim);letter-spacing:.1em}
+#vrToggleBar .vt-btn{font-family:var(--fm);font-size:11px;font-weight:800;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;transition:.2s}
+#vrToggleBar .vt-btn.classic{background:rgba(255,255,255,.08);color:var(--txt)}
+#vrToggleBar .vt-btn.vr-active{background:linear-gradient(135deg,var(--cyan),var(--magenta));color:#0d1b3d}
+#vrToggleBar .vt-btn:hover{opacity:.85}
+
+#homeBtn{position:absolute;top:0;left:0;z-index:15;font-family:var(--fm);font-size:11px;font-weight:700;background:rgba(8,12,31,.9);border:1px solid var(--line);color:var(--dim);padding:10px 18px;cursor:pointer;border-radius:0 0 12px 0;display:none}
+#homeBtn:hover{color:var(--cyan);border-color:var(--cyan)}
+
+#joyWrap{position:fixed;left:20px;bottom:80px;z-index:25;width:100px;height:100px;display:none;touch-action:none}
+#joyBase{position:absolute;inset:0;border-radius:50%;background:rgba(8,12,31,.6);border:2px solid var(--line);box-shadow:0 0 20px rgba(47,176,255,.1) inset}
+#joyNub{position:absolute;width:44px;height:44px;left:28px;top:28px;border-radius:50%;background:linear-gradient(145deg,var(--cyan),var(--purple));box-shadow:0 0 16px rgba(47,176,255,.4);transition:box-shadow .15s;pointer-events:none}
+#joyWrap.active #joyNub{box-shadow:0 0 24px rgba(255,63,176,.6)}
+#joyHint{position:fixed;left:20px;bottom:190px;z-index:25;font-family:var(--fm);font-size:9px;letter-spacing:.1em;color:var(--dim2);display:none}
+
+#bigBanner{position:fixed;inset:0;z-index:9500;display:none;align-items:center;justify-content:center;pointer-events:none}
+#bigBanner .bb-inner{font-family:var(--fd);text-align:center;animation:bbpop .55s cubic-bezier(.2,1.4,.4,1)}
+#bigBanner .bb-title{font-size:28px;letter-spacing:4px;text-shadow:0 0 30px currentColor}
+#bigBanner .bb-sub{font-family:var(--fm);font-size:14px;letter-spacing:.1em;color:var(--txt);margin-top:12px}
+@keyframes bbpop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+<script>
+(function(){
+  var shown=false;
+  function showErr(msg){
+    if(shown)return; shown=true;
+    var b=document.createElement('div');
+    b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:999999;background:#ff6b35;color:#fff;font-family:monospace;font-size:11px;padding:10px 14px;line-height:1.5;';
+    b.innerHTML='<b>Erreur detectee :</b> '+String(msg).slice(0,200)+'<div style="font-size:10px;margin-top:4px;opacity:.85">Note ce message exact et transmets-le pour diagnostic.</div><button style="margin-top:6px;padding:5px 10px;background:rgba(255,255,255,.2);border:none;border-radius:5px;color:#fff;font-family:inherit;cursor:pointer" onclick="this.parentNode.remove()">Fermer</button>';
+    document.body.appendChild(b);
+  }
+  window.addEventListener('error',function(e){ showErr((e.error&&e.error.message)||e.message||'Erreur inconnue'); });
+  window.addEventListener('unhandledrejection',function(e){ showErr((e.reason&&e.reason.message)||e.reason||'Promesse rejetee'); });
+})();
+</script>
+<div id="vignette"></div>
+<div id="scan"></div>
+
+<!-- BOOT SEQUENCE -->
+<div id="bootOverlay" style="position:fixed;inset:0;z-index:99999;background:#080c1f;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Rubik',sans-serif;">
+<div style="font-size:64px;line-height:1;margin-bottom:16px;filter:drop-shadow(0 0 20px #ffcc00);">🥽</div>
+<div style="font-family:'Anton',monospace;font-size:24px;letter-spacing:4px;text-shadow:0 0 20px #ffcc00;margin-bottom:8px;color:#ffcc00;">CYBER<span style="color:#9b4bff">QUEST</span></div>
+<div style="font-family:'Anton',monospace;font-size:11px;letter-spacing:4px;color:#9b4bff;margin-bottom:24px;">BATTLE ISLE // VERSION FINALE</div>
+<div id="bootLines" style="font-size:12px;line-height:2;color:#c6ff3d;width:280px;min-height:140px;text-shadow:0 0 8px rgba(198,255,61,.2);"></div>
+<div style="width:280px;height:8px;background:#141b3d;border:1px solid #1a2050;margin-top:20px;overflow:hidden;"><div id="bootBar" style="height:100%;width:0%;background:linear-gradient(90deg,#ffcc00,#9b4bff);box-shadow:0 0 16px #ffcc00;"></div></div>
+<div style="font-size:9px;color:#4a5a96;margin-top:16px;letter-spacing:3px;">TAP POUR PASSER</div>
+</div>
+<script>
+(function(){
+  var lines=["> INIT KERNEL................OK","> LOAD SECURITY MODULES......OK","> MOUNT /dev/cyberquest......OK","> DECRYPT PLAYER DATA........OK","> ESTABLISH UPLINK...........OK","> LOCALISATION BATTLE ISLE...OK","> WELCOME, OPERATOR."];
+  var ov=document.getElementById("bootOverlay"),ln=document.getElementById("bootLines"),bar=document.getElementById("bootBar");
+  if(!ov||!ln||!bar)return;
+  var i=0,html="";
+  var iv=setInterval(function(){
+    if(i<lines.length){html+="<div>"+lines[i]+"</div>";ln.innerHTML=html;i++;bar.style.width=Math.round(i/lines.length*100)+"%";}
+    else{clearInterval(iv);setTimeout(close,350);}
+  },220);
+  
+  function close(){
+    if(!ov)return;
+    ov.style.transition="opacity .5s ease";ov.style.opacity="0";
+    setTimeout(function(){
+      if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);
+    },500);
+  }
+  
+  ov.addEventListener("click",function(){ clearInterval(iv); close(); });
+  ov.addEventListener("touchstart",function(){ clearInterval(iv); close(); });
+})();
+</script>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="load-logo">CYBER<b>QUEST</b></div>
+  <div class="load-sub">Chargement en ligne...</div>
+  <div class="load-bar"><div class="load-fill"></div></div>
+  <div class="load-err" id="loadErr">Erreur de chargement. Vérifie ta connexion internet.</div>
+</div>
+
+<!-- LOGIN / CONFIG / LOCKER/ADMIN -->
+<div class="overlay" id="loginOv">
+  <div class="box">
+    <div class="ot">CYBER<b>QUEST</b></div>
+    <div class="os">Connexion</div>
+    <div class="tabs"><button class="tab sel" data-t="simon">🐣 Simon</button><button class="tab" data-t="niko">🦁 Niko</button><button class="tab" data-t="guest">👤 Guest</button></div>
+    <div class="tp show" id="tpsimon">
+      <div class="os" style="margin-bottom:8px">Methode rapide : <b>?config</b> sur iPhone</div>
+      <span class="ol">CLE GROQ</span><input class="oi" type="password" id="gkI" placeholder="gsk_..." autocomplete="off">
+      <span class="ol">CLE JSONBIN</span><input class="oi" type="password" id="jbI" placeholder="$2a$10$..." autocomplete="off">
+    </div>
+    <div class="tp" id="tpniko"><span class="ol">CLE GROQ</span><input class="oi" type="password" id="gkI2" placeholder="gsk_..." autocomplete="off"><span class="ol">CLE JSONBIN</span><input class="oi" type="password" id="jbI2" placeholder="$2a$10$..." autocomplete="off"></div>
+    <div class="tp" id="tpguest">
+      <div class="os" style="margin-bottom:8px;color:#9b4bff">Compte temporaire</div>
+      <div style="margin-bottom:10px;">
+        <div class="tabs" style="margin-bottom:12px;"><button class="tab sel" data-gt="account" id="gtab1">Compte</button><button class="tab" data-gt="code" id="gtab2">Code</button></div>
+        <div id="gtp-account"><span class="ol">NOM</span><input class="oi" type="text" id="guestName" placeholder="ex: Guest42" autocomplete="off"><span class="ol">MOT DE PASSE</span><input class="oi" type="password" id="guestPwd" placeholder="6 car." autocomplete="off" maxlength="6"></div>
+        <div id="gtp-code" style="display:none"><span class="ol">CODE 6 CARACTERES</span><input class="oi" type="text" id="sessionCode" placeholder="ex: AB3X9K" autocomplete="off" maxlength="6" style="text-transform:uppercase;letter-spacing:6px;font-size:18px;text-align:center"></div>
+      </div>
+    </div>
+    <button class="op" id="saveBtn">JOUER</button>
+    <div class="oe" id="oerr"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<button id="homeBtn">🏠 Carte</button>
+<div id="tb">
+  <div class="brand">CYBER<b>QUEST</b></div>
+  <div class="tbr">
+    <button class="tb" id="adminBtn" style="display:none">Admin</button>
+    <button class="tb" id="profileBtn">Profil</button>
+    <button class="tb" id="vrBtn">VR</button>
+    <button class="tb" id="quitBtn" style="border-color:#ff6b35;color:#ff6b35">Quitter</button>
+  </div>
+</div>
+<div id="st"></div>
+
+<div id="joyWrap"><div id="joyBase"></div><div id="joyNub"></div></div>
+<div id="joyHint">JOYSTICK = DEPLACEMENT</div>
+<div id="bigBanner"><div class="bb-inner"><div class="bb-title" id="bbTitle"></div><div class="bb-sub" id="bbSub"></div></div></div>
+
+<script>
+// DÉTECTION AUTOMATIQUE DU DISPOSITIF
+var DEVICE = 'pc';
+var joyVec = {x:0,y:0};
+var keys = {};
+
+async function detectDevice() {
+    const ua = navigator.userAgent;
+    let xrSupported = false;
+    if (navigator.xr) {
+        try { xrSupported = await navigator.xr.isSessionSupported('immersive-vr'); } catch(e) {}
+    }
+    
+    if (xrSupported && /Quest/i.test(ua)) {
+        DEVICE = 'vr';
+        document.getElementById('vrBtn').disabled = false;
+        document.getElementById('vrToggleBar').style.display = 'flex';
+    } else if (/Mobi|Android|iPhone|iPad/i.test(ua) || window.innerWidth < 1024) {
+        DEVICE = 'mobile';
+        document.getElementById('vrBtn').disabled = true;
+        document.getElementById('vrToggleBar').style.display = 'none';
+        document.getElementById('joyWrap').style.display = 'block';
+        document.getElementById('joyHint').style.display = 'block';
+    } else {
+        DEVICE = 'pc';
+        document.getElementById('vrBtn').disabled = true;
+        document.getElementById('vrToggleBar').style.display = 'none';
+        document.getElementById('joyWrap').style.display = 'none';
+        document.getElementById('joyHint').style.display = 'none';
+    }
+}
+
+var _threeReady = false; var _appReady = false;
+function _tryInit() { if (_threeReady && _appReady) initApp(); }
+
+// Timeout de sécurité
+setTimeout(function() {
+    if (!_threeReady) {
+        document.getElementById('loading').style.display = 'none';
+        var el = document.getElementById('loadErr');
+        if(el) el.textContent = "Erreur de connexion au CDN. Vérifie ta connexion (ex: passe en 4G/5G sur ton iPhone).";
+        if(el) el.style.display = 'block';
+    }
+}, 15000);
+
+(function() {
+  function loadScript(src, onok, onerr) { var s = document.createElement('script'); s.src = src; s.crossOrigin = 'anonymous'; s.onload = onok; s.onerror = onerr; document.head.appendChild(s); }
+  
+  // CORRECTION ICI : On utilise les CDN en ligne, 100% compatibles GitHub et iPhone
+  var cdn1 = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  var cdn2 = 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js';
+  loadScript(cdn1, function() { _threeReady = true; _tryInit(); }, function() { 
+    loadScript(cdn2, function() { _threeReady = true; _tryInit(); }, function() { 
+      document.getElementById('loading').style.display = 'none';
+      var el = document.getElementById('loadErr');
+      if(el) el.textContent = "Erreur de chargement.\n\nLes CDN sont injoignables. Vérifie ta connexion internet.";
+      if(el) el.style.display = 'block';
+    });
+  });
+})();
+
+_appReady = true;
+
+if (location.search.includes('config')) {
+  document.getElementById('loading').style.display = 'none'; document.getElementById('cfgOv').style.display = 'block'; document.getElementById('loginOv').style.display = 'none'; document.getElementById('tb').style.display = 'none';
+  var sCP = 'simon'; function syncCP() { [document.getElementById('cp1'),document.getElementById('cp2')].forEach(function(b){if(b)b.classList.toggle('sel',b.dataset.n===sCP);}); }
+  [document.getElementById('cp1'),document.getElementById('cp2')].forEach(function(b){if(b)b.addEventListener('click',function(){sCP=b.dataset.n;syncCP();});});
+  document.getElementById('genBtn').addEventListener('click', async function() {
+    var g=document.getElementById('cgk').value.trim(), j=document.getElementById('cjb').value.trim(), err=document.getElementById('cerr'), btn=document.getElementById('genBtn');
+    if(!g.startsWith('gsk_')){err.textContent='Cle Groq invalide';return;} if(!j.startsWith('$2a$')){err.textContent='Cle JSONBin invalide';return;}
+    err.textContent='Generation...'; btn.disabled=true; var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789', code=''; for(var i=0;i<6;i++)code+=chars[Math.floor(Math.random()*chars.length)];
+    try{ var r=await fetch('https://api.jsonbin.io/v3/b/'+'6a42d25af5f4af5e2943be8f'+'/latest',{headers:{'X-Master-Key':j}}); if(!r.ok)throw new Error('HTTP '+r.status); var rec=(await r.json()).record||{}; rec['_sess_'+code]={p:sCP,g:g,j:j,exp:Date.now()+30*60000}; await fetch('https://api.jsonbin.io/v3/b/'+'6a42d25af5f4af5e2943be8f',{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':j},body:JSON.stringify(rec)}); err.textContent=''; document.getElementById('qrlbl').textContent=code; document.getElementById('cfgForm').style.display='none'; document.getElementById('qrRes').style.display='block'; }catch(e){ err.textContent='Erreur: '+e.message; } btn.disabled=false;
+  });
+  document.getElementById('cfgReset').addEventListener('click',function(){document.getElementById('cfgForm').style.display='block';document.getElementById('qrRes').style.display='none';});
+} else {
+
+(function(){ var h=location.hash.slice(1); if(!h) return; var p={}; h.split('&').forEach(function(s){var parts=s.split('=');p[parts[0]]=decodeURIComponent(parts.slice(1).join('='));}); if(p.p&&p.g&&p.j){try{localStorage.setItem('cq_p',p.p);localStorage.setItem('cq_g',p.g);localStorage.setItem('cq_j',p.j);}catch(e){}history.replaceState(null,'',location.pathname);} })();
+
+var BIN_ID = '6a42d25af5f4af5e2943be8f'; var MODEL = 'llama-3.3-70b-versatile'; var VER = '9';
+var ZONES = [{"id":"python","name":"PYTHON DUNGEON","icon":"🐍","color":"#ffcc00","desc":"Scripting, réseau, crypto · S1-S8","weeks":[{"n":1,"title":"Variables et types","sub":"Bases du langage","topics":["str, int, float, bool, list, dict, tuple","Opérateurs arithmétiques et comparaison","f-strings et conversion de types","Input utilisateur"]},{"n":2,"title":"Conditions et boucles","sub":"Contrôle du flux","topics":["if / elif / else","Boucles for et range()","Boucle while et break/continue","Opérateurs logiques"]},{"n":3,"title":"Fonctions et modules","sub":"Organiser son code","topics":["def, paramètres, return","Valeurs par défaut","import os, sys, pathlib","Créer ses propres modules"]},{"n":4,"title":"Fichiers et exceptions","sub":"Lire, écrire, gérer les erreurs","topics":["open(), read(), write()","Modes r, w, a","try / except / finally","raise pour lever des exceptions"]},{"n":5,"title":"Sockets réseau","sub":"TCP, UDP et scanner de ports","topics":["socket.AF_INET, SOCK_STREAM","Client TCP et timeout","Scanner de ports avec connect_ex()","Récupérer les bannières"]},{"n":6,"title":"Cryptographie","sub":"hashlib, base64, secrets","topics":["base64 : encoder/décoder","hashlib : MD5, SHA1, SHA256","Module secrets pour tokens","Attaque dictionnaire sur MD5"]},{"n":7,"title":"Requests et scraping","sub":"HTTP, APIs REST, BeautifulSoup","topics":["requests : GET, POST, headers","Analyser les réponses JSON","BeautifulSoup pour parser HTML","User-Agent pour simuler un navigateur"]},{"n":8,"title":"Projet Network Scanner","sub":"Assembler toutes les compétences","topics":["Architecture en modules séparés","Port scanner multi-threadé","Grab de bannières des services","Rapport HTML auto-généré","GitHub avec README et docstrings"]}]},{"id":"reseau","name":"NETWORK FORTRESS","icon":"🌐","color":"#2fb0ff","desc":"TCP/IP, Cisco, Wireshark, VLAN · S5-S16","weeks":[{"n":1,"title":"Modèle OSI","sub":"Les 7 couches du réseau","topics":["7 couches OSI : rôle et protocoles","Encapsulation et désencapsulation","Modèle TCP/IP 4 couches vs OSI","Mémoriser les couches"]},{"n":2,"title":"Adressage IPv4","sub":"Sous-réseaux et CIDR","topics":["Adresse IP : 4 octets, 32 bits","Masque CIDR /24","Plages privées RFC 1918","Calculer réseau, broadcast, hôtes"]},{"n":3,"title":"TCP et handshake","sub":"Protocole de transport fiable","topics":["TCP vs UDP : garanties et usages","SYN, SYN-ACK, ACK","Numéros de séquence","Fermeture FIN, FIN-ACK, ACK"]},{"n":4,"title":"Wireshark","sub":"Analyser le trafic réseau","topics":["Interface Wireshark : capture en temps réel","Filtres : ip.addr, tcp.port, http, dns","Analyser un échange HTTP et DNS","Détecter un scan nmap dans une capture"]},{"n":5,"title":"DNS et DHCP","sub":"Infrastructure réseau de base","topics":["DNS : types A, AAAA, MX, CNAME, TXT","Chaîne de résolution DNS récursive","DHCP : DORA (Discover, Offer, Request, ACK)","dig et nslookup pour interroger le DNS"]},{"n":6,"title":"Cisco IOS","sub":"CLI switch et routeur","topics":["Modes IOS : User, Privileged, Config","show version, show interfaces, show ip route","Configurer une interface et no shutdown","copy running-config startup-config"]},{"n":7,"title":"VLANs","sub":"Segmentation logique","topics":["VLAN : isoler des groupes sans câble","Créer et nommer des VLANs en IOS","Ports access (1 VLAN) vs trunk (multi)","Standard 802.1Q et tagging"]},{"n":8,"title":"ACL et sécurité réseau","sub":"Filtrer et contrôler le trafic","topics":["ACL standard vs étendue sur Cisco","access-list 101 permit/deny","Appliquer une ACL sur une interface","Détecter anomalies avec Wireshark"]}]},{"id":"systemes","name":"LINUX TEMPLE","icon":"💻","color":"#9b4bff","desc":"Linux, Kali, Windows Server, VMs · S3-S18","weeks":[{"n":1,"title":"Linux navigation","sub":"Arborescence et commandes de base","topics":["Arborescence Linux : /, /etc, /home, /var","pwd, ls -la, cd, mkdir, rmdir","cp, mv, rm, touch, cat, less","find, grep, locate"]},{"n":2,"title":"Permissions Linux","sub":"Droits et sécurité fichiers","topics":["Notation rwx et octale (chmod 755)","chmod : modifier les droits","chown et chgrp : changer propriétaire","SUID, SGID, Sticky Bit"]},{"n":3,"title":"Bash scripting","sub":"Automatiser avec des scripts","topics":["Variables, $1 $2 $@ (arguments)","Conditions if/then/fi","Boucles for/while/until","Fonctions et redirections"]},{"n":4,"title":"VirtualBox et VMs","sub":"Créer son lab de sécurité","topics":["Créer une VM Ubuntu et Kali Linux","Modes réseau : NAT, Bridge, Host-Only, Internal","Snapshots pour sauvegarder l'état","Réseau Internal pour isoler le lab"]},{"n":5,"title":"Kali Linux","sub":"Outils offensifs essentiels","topics":["Distribution Kali : 600+ outils","nmap, netcat, John the Ripper, Hydra","Gobuster pour énumérer les répertoires web","Wordlists : rockyou.txt"]},{"n":6,"title":"Windows Server","sub":"Active Directory et administration","topics":["Active Directory : domaine, OU, utilisateurs","Créer et gérer des utilisateurs AD","GPO (Group Policy Objects)","PowerShell : Get-ADUser, Get-Process"]},{"n":7,"title":"Logs et forensics","sub":"Analyser les traces d'activité","topics":["Logs Linux : /var/log/auth.log, syslog","Détecter un brute-force SSH","Windows Event Viewer : Security, System","Lynis audit de sécurité Linux"]},{"n":8,"title":"Lab pentest complet","sub":"Infrastructure de test intégrée","topics":["Lab : Kali + Ubuntu cible + Windows","Réseau Internal VirtualBox isolé","Documenter l'archi avec draw.io","Premier test d'intrusion guidé"]}]},{"id":"thm","name":"TRYHACKME ARENA","icon":"🔐","color":"#ff6b35","desc":"OSINT, Web, Exploit, CTF · S9-S24","weeks":[{"n":1,"title":"OSINT et reconnaissance","sub":"Collecte passive d'informations","topics":["OSINT : sources publiques légalement accessibles","Google Dorking : site:, filetype:, intitle:","Shodan : inventorier les appareils exposés","theHarvester, WHOIS, Subfinder"]},{"n":2,"title":"Nmap avancé","sub":"Reconnaissance active","topics":["Options : -sV, -sS, -sU, -A, -p-","NSE (Nmap Scripting Engine) --script","Détection d'OS avec -O","Contourner les firewalls : -f, --source-port"]},{"n":3,"title":"Burp Suite","sub":"Proxy d'interception web","topics":["Configurer Burp comme proxy (127.0.0.1:8080)","Intercepter et modifier des requêtes HTTP","Repeater : rejouer et modifier","Intruder : attaques par dictionnaire"]},{"n":4,"title":"SQL Injection","sub":"Exploiter les bases de données","topics":["Injection SQL : concaténation non sécurisée","Bypass authentification OR 1=1","UNION SELECT pour exfiltrer des données","sqlmap pour automatiser la détection"]},{"n":5,"title":"XSS","sub":"Cross-Site Scripting","topics":["XSS réfléchi vs stocké vs DOM-based","Payloads basiques et bypass de filtres","Vol de cookies de session","Protection : htmlspecialchars, CSP headers"]},{"n":6,"title":"LFI et File Upload","sub":"Inclusions et uploads malveillants","topics":["LFI : lire des fichiers serveur","Traversée de répertoires ../../../","File Upload Bypass : extension, MIME","Gobuster pour découvrir les répertoires"]},{"n":7,"title":"Metasploit","sub":"Framework d'exploitation","topics":["Architecture : exploit, payload, auxiliary","msfconsole : search, use, show options, run","msfvenom : générer des payloads","Meterpreter : shell interactif"]},{"n":8,"title":"Privilege Escalation Linux","sub":"Obtenir les droits root","topics":["whoami, id, sudo -l, uname -a","SUID dangereux : find / -perm -4000","Cron jobs writables","LinPEAS pour automatiser l'énumération"]},{"n":9,"title":"Privilege Escalation Windows","sub":"Escalade sur Windows","topics":["whoami /priv, whoami /groups, systeminfo","Services mal configurés","AlwaysInstallElevated","WinPEAS pour automatiser"]},{"n":10,"title":"CTF Machines complètes","sub":"Méthodologie de bout en bout","topics":["Recon, Enum, Exploit, PrivEsc, Flag","Identifier le vecteur d'entrée","Obtenir un shell et le stabiliser","Write-up pendant la résolution"]},{"n":11,"title":"JWT et sessions web","sub":"Sécurité des tokens d'authentification","topics":["JWT structure : header.payload.signature","Attaque alg:none","Faible secret : cracker avec hashcat","Cookies : httpOnly, Secure, SameSite"]},{"n":12,"title":"HackTheBox Easy machines","sub":"Niveau supérieur","topics":["Différences THM vs HackTheBox","Enumération SMB et FTP anonyme","Exploitation de services mal configurés","Write-ups sur GitHub Pages"]}]},{"id":"rootme","name":"ROOTME CITADEL","icon":"🏴","color":"#c6ff3d","desc":"Crypto, Forensics, Pwn, CTF · S17-S36","weeks":[{"n":1,"title":"Encodages classiques","sub":"Base64, Hex, ROT13","topics":["Base64 : encoder/décoder, identifier le padding","Hexadécimal : octets vers notation 0-9 A-F","ROT13 : décalage 13, appliquer 2x = original","CyberChef pour automatiser"]},{"n":2,"title":"Chiffres classiques","sub":"César, Vigenère, substitution","topics":["César : décalage de 1 à 25, brute-force trivial","Vigenère : clé répétée, attaque Kasiski","Substitution monoalphabétique","Analyse de fréquences : e, a, s, i, t"]},{"n":3,"title":"RSA et hashes","sub":"Cryptographie asymétrique","topics":["RSA : principe p*q=n, clé publique et privée","Factoriser n si p et q sont proches","Hashes : MD5 cassé, SHA1 déprécié, SHA256 standard","Attaques : rainbow tables, dictionnaire, hashcat"]},{"n":4,"title":"Stéganographie","sub":"Cacher des données dans des médias","topics":["LSB (Least Significant Bit) dans les images","steghide pour JPEG et WAV","zsteg pour analyser les plans de bits","ExifTool pour les métadonnées EXIF"]},{"n":5,"title":"Forensics fichiers","sub":"Analyser des fichiers suspects","topics":["Magic bytes : identifier le vrai type de fichier","binwalk : détecter et extraire des fichiers imbriqués","foremost : récupérer depuis image disque","tshark : analyser captures pcap en CLI"]},{"n":6,"title":"Forensics mémoire","sub":"Volatility 3 et dumps RAM","topics":["Volatility 3 : analyser dumps Windows/Linux","Plugins : windows.pslist, windows.netscan","Extraire processus, connexions, hashs NTLM","Créer un dump depuis VirtualBox"]},{"n":7,"title":"pwntools et buffer overflow","sub":"Exploitation de binaires","topics":["pwntools : bibliothèque Python pour le pwn","Chercher l'offset du buffer overflow","ret2win : écraser l'adresse de retour","checksec : vérifier les protections d'un binaire"]},{"n":8,"title":"CTF compétitif","sub":"Compétitions et write-ups","topics":["CTFtime.org : agenda mondial des CTF","Catégories : web, crypto, forensics, pwn, reverse","Organiser une équipe et les rôles","Structure d'un write-up professionnel"]}]},{"id":"elec","name":"ELECTRONICS LAB","icon":"🔌","color":"#ff9d1f","desc":"Arduino, Raspberry Pi, IoT · S1-S52","weeks":[{"n":1,"title":"Arduino premier sketch","sub":"LED, Serial, bases","topics":["Structure : setup() 1x, loop() en boucle","pinMode, digitalWrite, digitalRead, analogRead","Moniteur série : Serial.begin() et println()","Types en C++ Arduino : int, float, bool, String"]},{"n":2,"title":"Capteurs et actionneurs","sub":"DHT11, ultrason, servo, LCD","topics":["DHT11 : mesurer température et humidité","HC-SR04 : mesurer une distance par ultrason","Servo SG90 : contrôle d'angle précis","LCD I2C 16x2 : afficher des données"]},{"n":3,"title":"Protocoles embarqués","sub":"UART, I2C, SPI","topics":["UART : communication série asynchrone","I2C : bus 2 fils, adresses 7 bits","SPI : 4 fils, plus rapide, full-duplex","Déboguer avec un analyseur logique"]},{"n":4,"title":"Raspberry Pi","sub":"Linux embarqué et GPIO","topics":["Installer Raspberry Pi OS avec RPi Imager","SSH depuis PC sans écran (headless)","GPIO en Python : RPi.GPIO ou gpiozero","Serveur web minimal avec Flask sur le Pi"]},{"n":5,"title":"Serveur Flask et IoT","sub":"Dashboard capteurs en temps réel","topics":["Flask : routes, templates, jsonify","Données capteurs vers API REST","Chart.js pour les visualisations","Stocker les données en SQLite"]},{"n":6,"title":"Sécurité IoT","sub":"Analyser les objets connectés","topics":["Inventorier les appareils IoT avec nmap","Capturer le trafic d'un objet (Wireshark)","MQTT : protocole IoT souvent non chiffré","Firmware analysis avec binwalk"]},{"n":7,"title":"Projet IoT Sécurisé","sub":"Dashboard avec authentification","topics":["flask-login : gestion des sessions","HTTPS avec certificat auto-signé","SQLite pour stocker l'historique","Alertes Telegram si seuil dépassé"]},{"n":8,"title":"Système Arduino + Pi","sub":"Projet SIN intégré complet","topics":["Arduino vers Pi via UART : envoi données capteurs","Pi stocke en SQLite, sert le dashboard Flask","Schéma électronique complet avec Fritzing","Documentation technique du projet"]}]}];
+var BQ = [{id:'bq1',icon:'🔥',title:'Série 3 jours',xp:50,story:["Jour 1 — le camp est sécurisé.","Jour 2 — les drones de surveillance reviennent.","Jour 3 — alerte NEXUS : tu tiens bon."],check:function(){return myStreak>=3;}},{id:'bq2',icon:'🔥',title:'Série 7 jours',xp:150,story:["Une semaine complète sur le pont.","AEGIS confirme : ta discipline inquiète NEXUS lui-même."],check:function(){return myStreak>=7;}},{id:'bq3',icon:'🏆',title:'Zone complète',xp:200,story:["Un territoire entier reprend vie sous ton contrôle.","AEGIS : une zone sécurisée en entraîne toujours une autre."],check:function(){return ZONES.some(function(z){return z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});});}},{id:'bq4',icon:'🗺️',title:'Explorateur',xp:100,story:["Tu as posé le pied sur 3 territoires de Battle Isle.","GHOST t'observe au loin : il progresse plus vite que prévu."],check:function(){return ZONES.filter(function(z){return z.weeks.some(function(w){return myDone[z.id+'_'+w.n];});}).length>=3;}},{id:'bq5',icon:'✅',title:'Sans-faute',xp:120,story:["Cinq missions, zéro hésitation.","AEGIS : un agent qui apprend vite est un agent qui survit."],check:function(){return totalDone()>=5;}},{id:'bq6',icon:'🏃',title:'Marathon',xp:300,story:["15 missions bouclées : Battle Isle te reconnaît désormais.","NEXUS a repéré ton signal. Tu n'es plus invisible."],check:function(){return totalDone()>=15;}},{id:'bq7',icon:'🌐',title:'Firewall Titan vaincu',boss:'Firewall Titan',xp:200,story:["Toute la ville coupée du réseau : direction Network Fortress.","Le Firewall Titan s'effondre. Les antennes reprennent vie."],check:function(){var z=ZONES.find(function(x){return x.id==='reseau';});return z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});}},{id:'bq8',icon:'🐍',title:'Python Hydra vaincue',boss:'Python Hydra',xp:200,story:["Des robots infectés par un script corrompu envahissent le Dungeon.","La Python Hydra est terrassée : le code est enfin propre."],check:function(){var z=ZONES.find(function(x){return x.id==='python';});return z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});}},{id:'bq9',icon:'💻',title:'Root Keeper vaincu',boss:'Root Keeper',xp:200,story:["Les archives du Linux Temple dorment derrière de vieux serveurs.","Le Root Keeper cède les accès root : les archives sont libres."],check:function(){var z=ZONES.find(function(x){return x.id==='systemes';});return z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});}},{id:'bq10',icon:'🔐',title:'Phantom Hacker neutralisé',boss:'Phantom Hacker',xp:200,story:["Chaque combat dans TryHackMe Arena forge une nouvelle technique.","Le Phantom Hacker se dissout dans le code : l'Arène est sécurisée."],check:function(){var z=ZONES.find(function(x){return x.id==='thm';});return z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});}},{id:'bq11',icon:'🏴',title:'Cipher King vaincu',boss:'Cipher King',xp:200,story:["Au sommet de RootMe Citadel, les énigmes remplacent les armes.","Le Cipher King tombe : ses chiffres n'ont plus de secret pour toi."],check:function(){var z=ZONES.find(function(x){return x.id==='rootme';});return z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});}},{id:'bq12',icon:'🔌',title:'Mecha Core détruit',boss:'Mecha Core',xp:200,story:["Le laboratoire abandonné d'Electronics Lab cache une machine hostile.","Le Mecha Core s'éteint enfin. Les circuits t'appartiennent."],check:function(){var z=ZONES.find(function(x){return x.id==='elec';});return z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});}}];
+var SC = [{id:'sc1',icon:'🪂',title:'Alerte Fortnite',desc:'Message V-Bucks suspects.',xp:120,topic:'Phishing jeu video'},{id:'sc2',icon:'🧱',title:'Exploiteur Roblox',desc:'Joueur triche dans ton experience.',xp:120,topic:'Exploitation et signalement'},{id:'sc3',icon:'🪓',title:'Intrusion Minecraft',desc:'Base detruite cette nuit.',xp:120,topic:'Forensic logs serveur'},{id:'sc4',icon:'🛡️',title:'Le Vaillant',desc:'Mission de synthese.',xp:150,topic:'Defense en profondeur'},{id:'sc5',icon:'🎮',title:'Steam Scam',desc:'Faux support Steam.',xp:120,topic:'Ingenierie sociale'}];
+var TOTAL_MISSIONS = ZONES.reduce(function(s,z){return s+z.weeks.length;},0);
+var BOSSES = {python:{name:'PYTHON HYDRA',icon:'🐍',quote:"Chaque ligne que tu corriges en cache une autre..."},reseau:{name:'FIREWALL TITAN',icon:'🌐',quote:"Aucun paquet ne passe sans mon accord."},systemes:{name:'ROOT KEEPER',icon:'💻',quote:"Les privileges se meritent."},thm:{name:'PHANTOM HACKER',icon:'🔐',quote:"Tu ne me vois jamais avant le dernier paquet."},rootme:{name:'CIPHER KING',icon:'🏴',quote:"Sans la cle, tu n'es qu'un bruit."},elec:{name:'MECHA CORE',icon:'🔌',quote:"Mes circuits ne connaissent pas la peur."}};
+var GADGETS = [{id:'g1',icon:'🛰️',name:"Scanner Wi-Fi",desc:"Recupere dans Python Dungeon.",zone:'python'},{id:'g2',icon:'🛡️',name:"Pare-feu portable",desc:"Arrache au Firewall Titan.",zone:'reseau'},{id:'g3',icon:'💾',name:"Cle USB Kali",desc:"Recuperee au Linux Temple.",zone:'systemes'},{id:'g4',icon:'🔑',name:"Exploit Kit",desc:"Confisque au Phantom Hacker.",zone:'thm'},{id:'g5',icon:'🤖',name:"Drone recon",desc:"Recupere sur RootMe Citadel.",zone:'rootme'},{id:'g6',icon:'📡',name:"Antenne LP",desc:"Sauvee du Mecha Core.",zone:'elec'}];
+var STORY_BEATS = [{at:1, title:"PREMIER CONTACT", speaker:"AEGIS", body:"Bien joue, Agent. Ton drone BYTE est operationnel.", color:'#2fb0ff', btn:"CONTINUER"},{at:Math.round(TOTAL_MISSIONS*0.2), title:"LA MENACE", speaker:"NEXUS", body:"Un agent de plus...", color:'#ff4d5e', btn:"CONTINUER"},{at:Math.round(TOTAL_MISSIONS*0.5), title:"LE CIEL ROUGIT", speaker:"AEGIS", body:"NEXUS double son emprise.", color:'#ff6b35', btn:"CONTINUER"},{at:Math.round(TOTAL_MISSIONS*0.75), title:"ASSAUT GENERAL", speaker:"AEGIS", body:"C'est maintenant ou jamais.", color:'#ff9d1f', btn:"CONTINUER"}];
+var INTRO_SCENES = [{title:"BATTLE ISLE — 2042", speaker:"", body:"Une intelligence artificielle nommee NEXUS controle les reseaux mondiaux.", color:'#ff4d5e', btn:"CONTINUER"},{title:"LARGAGE", speaker:"AEGIS", body:"Tu es notre derniere chance de reprendre l'ile.", color:'#2fb0ff', btn:"RECEPTIONNE TON DRONE"},{title:"EVA", speaker:"EVA", body:"Chaque gadget passe par mon atelier.", color:'#3ce68a', btn:"COMPRIS"},{title:"BYTE EST OPERATIONNEL", speaker:"BYTE", body:"Bip. Drone BYTE en ligne.", color:'#c6ff3d', btn:"COMMENCER LA RECONQUETE"}];
+
+function lsg(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
+function lss(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+if(lsg('cq_ver')!==VER){['cq_p','cq_g','cq_j'].forEach(function(k){lss(k,'');});lss('cq_ver',VER);}
+var profile=lsg('cq_p'), groqKey=lsg('cq_g'), jbKey=lsg('cq_j');
+var isGuest=false, guestAllowedZones=null, guestXpCap=null;
+var myXp=0, myDone={}, myStreak=0, myBQ={}, coursText='', coursPage=0, qLocked=false;
+var selectedSkin = parseInt(localStorage.getItem('cq_skin')) || 0;
+var SKINS = [{icon:'🧑‍💻',name:"Débutant",rarity:"Commune",class:"skin-common",color:"#8fa3d9"},{icon:'🕵️',name:"Analyste SOC",rarity:"Rare",class:"skin-uncommon",color:"#3ce68a"},{icon:'🦹',name:"Pentester",rarity:"Epic",class:"skin-epic",color:"#9b4bff"},{icon:'⚪',name:"White Hat Elite",rarity:"Epic",class:"skin-epic",color:"#9b4bff"},{icon:'🦸',name:"Cyber Legend",rarity:"Légendaire",class:"skin-legendary",color:"#ff9d1f"},{icon:'👹',name:"Nexus Corrompu",rarity:"Mythique",class:"skin-mythic",color:"#ff4d5e"}];
+var st=document.getElementById('st');
+function totalDone(){return Object.values(myDone).filter(Boolean).length;}
+function calcXP(d,b){var x=0;ZONES.forEach(function(z){z.weeks.forEach(function(w){if(d[z.id+'_'+w.n])x+=100;});});BQ.concat(SC).forEach(function(q){if(b&&b[q.id])x+=q.xp;});return x;}
+function updateStreak(){var td=new Date().toISOString().slice(0,10),last=lsg('cq_last');if(last===td)return;var yd=new Date(Date.now()-86400000).toISOString().slice(0,10);myStreak=last===yd?myStreak+1:1;lss('cq_last',td);}
+function levelFromXP(xp){return 1+Math.floor((xp||0)/300);}
+function unlockedGadgets(){return GADGETS.filter(function(g){var z=ZONES.find(function(x){return x.id===g.zone;});return !!z&&z.weeks.every(function(w){return myDone[z.id+'_'+w.n];});});}
+
+var loginOv=document.getElementById('loginOv'); var selTab='simon';
+function showOv(){loginOv.style.display='flex';syncTab();}
+function hideOv(){loginOv.style.display='none';}
+function syncTab(){document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('sel',t.dataset.t===selTab);});['simon','niko','guest'].forEach(function(t){var el=document.getElementById('tp'+t);if(el)el.classList.toggle('show',t===selTab);});}
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){selTab=t.dataset.t;syncTab();});});
+document.querySelectorAll('[data-gt]').forEach(function(b){b.addEventListener('click',function(){var gt=b.dataset.gt;document.querySelectorAll('[data-gt]').forEach(function(x){x.classList.toggle('sel',x.dataset.gt===gt);});document.getElementById('gtp-account').style.display=gt==='account'?'block':'none';document.getElementById('gtp-code').style.display=gt==='code'?'block':'none';});});
+
+document.getElementById('saveBtn').addEventListener('click',function(){
+  var oerr=document.getElementById('oerr');oerr.textContent='';
+  if(selTab==='guest'){
+    var gMode=document.getElementById('gtp-code')&&document.getElementById('gtp-code').style.display!=='none'?'code':'account';
+    if(gMode==='code'){ var sc=document.getElementById('sessionCode').value.trim().toUpperCase(); if(sc.length!==6){oerr.textContent='Code 6 caracteres requis';return;} oerr.textContent='Verification...'; loginByCode(sc,oerr); }
+    else { var gn=document.getElementById('guestName').value.trim(); var gp=document.getElementById('guestPwd').value.trim().toUpperCase(); if(!gn||gp.length<4){oerr.textContent='Nom et mot de passe requis';return;} oerr.textContent='Verification...'; loginGuest(gn,gp,oerr); }
+  } else {
+    var g=selTab==='simon'?document.getElementById('gkI').value.trim():document.getElementById('gkI2').value.trim();
+    var j=selTab==='simon'?document.getElementById('jbI').value.trim():document.getElementById('jbI2').value.trim();
+    if(!g.startsWith('gsk_')){oerr.textContent='Cle Groq invalide';return;}
+    if(!j.startsWith('$2a$')){oerr.textContent='Cle JSONBin invalide';return;}
+    profile=selTab;groqKey=g;jbKey=j;isGuest=false; lss('cq_p',profile);lss('cq_g',groqKey);lss('cq_j',jbKey);
+    oerr.textContent='';hideOv();
+    loadPlayer().then(function(){if(typeof renderZones==='function'){renderZones();loadLB();}if(profile==='simon')document.getElementById('adminBtn').style.display='';});
+  }
+});
+
+async function loginGuest(gn,gp,oerr){
+  try{ var res=await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID+'/latest'); if(!res.ok)throw new Error('Bin inaccessible.');
+    var rec=(await res.json()).record||{}; var entry=Object.values(rec).find(function(v){return v&&v.type==='guest'&&(v.name||'').toLowerCase()===gn.toLowerCase()&&v.password===gp;});
+    if(!entry){oerr.textContent='Nom ou mot de passe incorrect';return;} if(entry.suspended){oerr.textContent='Compte suspendu.';return;} if(entry.expiresAt&&Date.now()>entry.expiresAt){oerr.textContent='Compte expire.';return;}
+    profile=entry.name;isGuest=true; guestAllowedZones=entry.allowedZones||null; guestXpCap=entry.xpCap||null;
+    groqKey=(rec._config&&rec._config.sharedGroqKey)||''; myDone=entry.done||{};myStreak=0;myBQ=entry.bonusClaimed||{};myXp=calcXP(myDone,myBQ);
+    oerr.textContent='';hideOv(); if(typeof renderZones==='function'){renderZones();loadLB();} st.textContent='Mode Guest';
+  }catch(e){oerr.textContent='Erreur: '+e.message;}
+}
+async function loginByCode(code,oerr){
+  try{ var res=await fetch('https://api.jsonbin.io/v3/b/'+'6a42d25af5f4af5e2943be8f'+'/latest'); if(!res.ok)throw new Error('Bin inaccessible.');
+    var rec=(await res.json()).record||{}; var sess=rec['_sess_'+code]; if(!sess)throw new Error('Code invalide ou expire'); if(sess.exp<Date.now())throw new Error('Code expire.');
+    profile=sess.p;groqKey=sess.g;jbKey=sess.j;isGuest=false; lss('cq_p',profile);lss('cq_g',groqKey);lss('cq_j',jbKey);
+    oerr.textContent='';hideOv(); loadPlayer().then(function(){if(typeof renderZones==='function'){renderZones();loadLB();}});
+  }catch(e){oerr.textContent='Erreur: '+e.message;}
+}
+document.getElementById('profileBtn').addEventListener('click', function(){
+    if(DEVICE === 'pc' || DEVICE === 'vr'){
+        document.getElementById('lockerOv').style.display='flex'; renderLocker();
+    } else {
+        showOv();
+    }
+});
+if(!profile||!groqKey||!jbKey)showOv();
+
+document.getElementById('adminBtn').addEventListener('click',openAdmin);
+document.getElementById('adminClose').addEventListener('click',function(){document.getElementById('adminOv').style.display='none';});
+async function openAdmin(){
+  document.getElementById('adminOv').style.display='block'; var list=document.getElementById('adminList');
+  list.innerHTML='<div style="color:#8fa3d9;font-family:monospace;font-size:11px">Chargement...</div>';
+  try{ var res=await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID+'/latest',{headers:{'X-Master-Key':jbKey}}); var rec=(await res.json()).record||{}; var html=''; Object.entries(rec).forEach(function(kv){ var k=kv[0],v=kv[1]; if(k==='_config'||k==='init'||!v||!v.name)return; var susp=v.suspended?'(SUSPENDU) ':''; var typ=v.type==='guest'?'Guest':'Joueur'; var exp=v.expiresAt?'Expire: '+new Date(v.expiresAt).toLocaleDateString('fr'):''; var zones=v.allowedZones?v.allowedZones.join(','):'Toutes'; var xcap=v.xpCap?'XP max:'+v.xpCap:'XP illimite'; html+='<div class="acct">'; html+='<div class="acname">'+susp+v.name+'</div>'; html+='<div class="acinfo">'+typ+' · '+xcap+' · Zones: '+zones+(v.password?' · Pwd: <b>'+v.password+'</b>':'')+' '+exp+'</div>'; html+='<div class="acbtns">'; if(v.name!=='Simon'){ html+='<button class="ab ab-s" data-k="'+k+'" data-s="'+(v.suspended?'1':'0')+'">'+(v.suspended?'Restaurer':'Suspendre')+'</button>'; html+='<button class="ab ab-d" data-k="'+k+'">Supprimer</button>'; html+='<button class="ab ab-z" data-k="'+k+'">Zones</button>'; } html+='</div></div>'; }); list.innerHTML=html||'<div style="color:#8fa3d9;font-size:11px;font-family:monospace">Aucun autre compte</div>';
+    list.querySelectorAll('.ab-s').forEach(function(b){b.addEventListener('click',function(){toggleSusp(b.dataset.k,b.dataset.s==='1');});}); list.querySelectorAll('.ab-d').forEach(function(b){b.addEventListener('click',function(){if(confirm('Supprimer ?'))delAcct(b.dataset.k);});}); list.querySelectorAll('.ab-z').forEach(function(b){b.addEventListener('click',function(){setZones(b.dataset.k);});});
+  }catch(e){list.innerHTML='<div style="color:#ff4d5e;font-size:11px;font-family:monospace">'+e.message+'</div>';}
+}
+async function writeRec(fn){var r=await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID+'/latest',{headers:{'X-Master-Key':jbKey}});var rec=(await r.json()).record||{};fn(rec);await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':jbKey},body:JSON.stringify(rec)});openAdmin();}
+async function toggleSusp(k,cur){await writeRec(function(rec){if(rec[k])rec[k].suspended=!cur;});}
+async function delAcct(k){await writeRec(function(rec){delete rec[k];});}
+async function setZones(k){var inp=prompt('Zones (virgule, vide=toutes):\npython,reseau,systemes,thm,rootme,elec');if(inp===null)return;var z=inp.trim()?inp.split(',').map(function(s){return s.trim();}).filter(Boolean):null;await writeRec(function(rec){if(rec[k])rec[k].allowedZones=z;});}
+document.getElementById('createGuestBtn').addEventListener('click',async function(){
+  var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; var pwd='';for(var i=0;i<6;i++)pwd+=chars[Math.floor(Math.random()*chars.length)];
+  var name='Guest'+Math.floor(Math.random()*900+100); var expH=parseInt(prompt('Duree (heures) :')||'48');
+  var zinp=prompt('Zones autorisees (vide=toutes) :\npython,reseau,systemes,thm,rootme,elec')||''; var zones=zinp.trim()?zinp.split(',').map(function(s){return s.trim();}):null;
+  var xcap=parseInt(prompt('XP max (0=illimite) :')||'0')||null;
+  try{ await writeRec(function(rec){ rec['g_'+Date.now()]={name:name,type:'guest',password:pwd,xp:0,done:{},streak:0,bonusClaimed:{},allowedZones:zones,xpCap:xcap,suspended:false,expiresAt:Date.now()+expH*3600000,updatedAt:Date.now()}; if(!rec._config)rec._config={}; if(!rec._config.sharedGroqKey&&groqKey)rec._config.sharedGroqKey=groqKey; });
+    var gr=document.getElementById('gres'); gr.style.display='block'; gr.innerHTML='Compte Guest cree !<br>Nom : <b>'+name+'</b><br>Mot de passe : <b>'+pwd+'</b><br>Duree : '+expH+'h';
+  }catch(e){alert('Erreur: '+e.message);}
+});
+
+// LOCKER
+function renderLocker(){
+  var grid=document.getElementById('lockerGrid'); grid.innerHTML='';
+  SKINS.forEach(function(skin, idx){
+    var card=document.createElement('div'); card.className='skin-card'+(idx===selectedSkin?' selected':'');
+    var preview=document.createElement('div'); preview.className='skin-3d-preview'; preview.textContent=skin.icon; preview.style.color=skin.color; preview.style.textShadow='0 0 20px '+skin.color;
+    var name=document.createElement('span'); name.className='skin-name'; name.textContent=skin.name;
+    var rarity=document.createElement('span'); rarity.className='skin-rarity '+skin.class; rarity.textContent=skin.rarity;
+    card.appendChild(preview); card.appendChild(name); card.appendChild(rarity);
+    card.addEventListener('click',function(){ selectedSkin=idx; try{localStorage.setItem('cq_skin',String(idx));}catch(e){} renderLocker(); });
+    grid.appendChild(card);
+  });
+}
+document.getElementById('lockerClose').addEventListener('click',function(){document.getElementById('lockerOv').style.display='none';});
+
+function initApp() {
+  document.getElementById('loading').style.display = 'none';
+  try {
+    function skyTex(){var c=document.createElement('canvas');c.width=8;c.height=256;var g=c.getContext('2d'),grd=g.createLinearGradient(0,0,0,256);grd.addColorStop(0,'#182645');grd.addColorStop(.3,'#3d5c82');grd.addColorStop(.6,'#e0975e');grd.addColorStop(.8,'#a8577a');grd.addColorStop(1,'#241a35');g.fillStyle=grd;g.fillRect(0,0,8,256);return new THREE.CanvasTexture(c);}
+    var scene=new THREE.Scene();scene.background=skyTex();scene.fog=new THREE.Fog(0x7a6a8a,4,15);
+    var cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.05,60);cam.position.set(0,2.5,3);
+    var dolly=new THREE.Group();scene.add(dolly);dolly.add(cam);
+    var rdr=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'}); rdr.setPixelRatio(Math.min(devicePixelRatio,2));rdr.setSize(innerWidth,innerHeight);rdr.xr.enabled=true; document.body.appendChild(rdr.domElement);
+    window.addEventListener('resize',function(){cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();rdr.setSize(innerWidth,innerHeight);});
+    scene.add(new THREE.AmbientLight(0x4a4568,1.0));
+    [[-1.5,0xffaa55],[1.5,0x2fb0ff]].forEach(function(p){var l=new THREE.PointLight(p[1],1.5,9);l.position.set(p[0],3,.5);scene.add(l);});
+    var sun=new THREE.DirectionalLight(0xffe0b0,1.0);sun.position.set(-8,10,5);scene.add(sun);
+
+    var isleR=7.0;
+    var flatTerrain=new THREE.Mesh(new THREE.CylinderGeometry(isleR, isleR, 0.2, 32, 1), new THREE.MeshLambertMaterial({color:0x2a4d3c})); flatTerrain.position.y=-0.1; scene.add(flatTerrain);
+    var centerRing=new THREE.Mesh(new THREE.RingGeometry(1.8, 2.0, 32), new THREE.MeshBasicMaterial({color:0x2fb0ff, side: THREE.DoubleSide, transparent:true, opacity:0.3})); centerRing.position.set(0, 0.01, 0); centerRing.rotation.x=-Math.PI/2; scene.add(centerRing);
+    var zonePositions = [{id:'python', pos:[-5.0, 0, -2.0], color:0xffcc00},{id:'reseau', pos:[0, 0, -6.0], color:0x2fb0ff},{id:'systemes', pos:[5.5, 0, -2.0], color:0x9b4bff},{id:'thm', pos:[-4.5, 0, 4.0], color:0xff6b35},{id:'rootme', pos:[0, 0, 5.5], color:0xc6ff3d},{id:'elec', pos:[4.5, 0, 4.0], color:0xff9d1f}];
+    zonePositions.forEach(function(zp){ var base=new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.8, 0.3, 8), new THREE.MeshLambertMaterial({color:zp.color})); base.position.set(zp.pos[0], 0.05, zp.pos[2]); scene.add(base); var beacon=new THREE.Mesh(new THREE.OctahedronGeometry(0.2), new THREE.MeshBasicMaterial({color:zp.color, transparent:true, opacity:0.6})); beacon.position.set(zp.pos[0], 0.35, zp.pos[2]); scene.add(beacon); });
+    var lineMat = new THREE.LineBasicMaterial({color: 0x2fb0ff, transparent: true, opacity: 0.15}); var points = zonePositions.map(function(p){ return new THREE.Vector3(p.pos[0], 0.05, p.pos[2]); }); var geometry = new THREE.BufferGeometry().setFromPoints(points); var lines = new THREE.Line(geometry, lineMat); scene.add(lines);
+    var pG=new THREE.BufferGeometry(),pA=new Float32Array(300); for(var pi=0;pi<100;pi++){pA[pi*3]=(Math.random()-.5)*12;pA[pi*3+1]=Math.random()*2+0.5;pA[pi*3+2]=(Math.random()-.5)*12;} pG.setAttribute('position',new THREE.BufferAttribute(pA,3)); scene.add(new THREE.Points(pG,new THREE.PointsMaterial({color:0xffcc77,size:.025,transparent:true,opacity:0.4})));
+
+    // CRÉATION DU PERSONNAGE 3D LOW-POLY
+    var playerGroup = new THREE.Group();
+    var skinColor = new THREE.Color(SKINS[selectedSkin].color);
+    var darkMat = new THREE.MeshLambertMaterial({color: 0x111122});
+    var bodyMat = new THREE.MeshLambertMaterial({color: skinColor});
+    var headMat = new THREE.MeshLambertMaterial({color: new THREE.Color().setHSL(skinColor.getHSL({}).h, 0.3, 0.8)});
+    
+    var head = new THREE.Mesh(new THREE.SphereGeometry(0.12, 6, 6), headMat);
+    head.position.y = 0.18; playerGroup.add(head);
+    var torso = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.12, 0.15, 5), bodyMat);
+    torso.position.y = 0.08; playerGroup.add(torso);
+    var legGeom = new THREE.CylinderGeometry(0.04, 0.06, 0.12, 4);
+    var legL = new THREE.Mesh(legGeom, darkMat); legL.position.set(-0.04, -0.04, 0); playerGroup.add(legL);
+    var legR = new THREE.Mesh(legGeom, darkMat); legR.position.set(0.04, -0.04, 0); playerGroup.add(legR);
+    playerGroup.position.set(0, 0.1, 0); scene.add(playerGroup);
+
+    function mkP(w,h,fn){var c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');if(fn)fn(x,w,h);var t=new THREE.CanvasTexture(c);t.minFilter=THREE.LinearFilter;return{canvas:c,ctx:x,tex:t};}
+    function rr(x,ax,ay,w,h,r){x.beginPath();x.moveTo(ax+r,ay);x.arcTo(ax+w,ay,ax+w,ay+h,r);x.arcTo(ax+w,ay+h,ax,ay+h,r);x.arcTo(ax,ay+h,ax,ay,r);x.arcTo(ax,ay,ax+w,ay,r);x.closePath();}
+    function wt(x,t,px,py,mw,lh){var yy=py;String(t).split('\n').forEach(function(para){if(para===''){yy+=lh;return;}var ws=para.split(' '),ln='';ws.forEach(function(w){var tt=ln+w+' ';if(x.measureText(tt).width>mw&&ln){x.fillText(ln,px,yy);yy+=lh;ln=w+' ';}else ln=tt;});if(ln.trim()){x.fillText(ln,px,yy);yy+=lh;}});}
+    function panBg(x,w,h,col){x.clearRect(0,0,w,h);x.fillStyle='rgba(8,12,31,.96)';rr(x,0,0,w,h,12);x.fill();x.strokeStyle='#2f3f72';x.lineWidth=2;rr(x,1,1,w-2,h-2,12);x.stroke();var ac=col||'#2fb0ff';x.shadowColor=ac;x.shadowBlur=12;x.fillStyle=ac;x.fillRect(0,24,4,h-48);x.shadowBlur=0;}
+    function cBg(x,w,h,title,sub,body,col,pg,tot){panBg(x,w,h,col);x.fillStyle=col||'#2fb0ff';x.shadowColor=col;x.shadowBlur=8;x.font='700 20px Anton, sans-serif';x.textAlign='left';x.fillText(title,32,54);x.shadowBlur=0;if(sub){x.fillStyle='#8fa3d9';x.font='400 12px Anton, sans-serif';x.fillText(sub,32,76);}if(body){x.fillStyle='#eef4ff';x.font='400 18px Rubik, sans-serif';wt(x,body,32,105,630,28);}if(tot>1){x.fillStyle='#4a5a96';x.font='400 12px Anton, sans-serif';x.textAlign='right';x.fillText('Page '+(pg+1)+'/'+tot,w-32,h-20);}}
+
+    var cG=new THREE.Group();cG.position.set(0,1.7,-2.2);scene.add(cG);
+    var cP=mkP(800,540,null);cG.add(new THREE.Mesh(new THREE.PlaneGeometry(1.3,.88),new THREE.MeshBasicMaterial({map:cP.tex,transparent:true})));
+    var bMs=[];for(var bi=0;bi<8;bi++){var bp=mkP(760,80,null);var bm=new THREE.Mesh(new THREE.PlaneGeometry(1.2,.12),new THREE.MeshBasicMaterial({map:bp.tex,transparent:true}));bm.position.set(0,.34-bi*.11,.01);bm.visible=false;bm.userData={p:bp,cb:null};cG.add(bm);bMs.push(bm);}
+    var xpFP=mkP(320,80,null);var xpFM=new THREE.Mesh(new THREE.PlaneGeometry(.4,.1),new THREE.MeshBasicMaterial({map:xpFP.tex,transparent:true,opacity:0}));xpFM.position.set(.55,.32,.02);cG.add(xpFM);var xpA=null;
+
+    function dBtn(m,l,col,bg){var x=m.userData.p.ctx;x.clearRect(0,0,760,80);x.fillStyle=bg||'rgba(255,255,255,.03)';rr(x,0,0,760,80,10);x.fill();x.strokeStyle=col||'#2f3f72';x.lineWidth=2;rr(x,2,2,756,76,10);x.stroke();x.fillStyle='#eef4ff';x.font='600 24px Rubik, sans-serif';x.textAlign='left';x.textBaseline='middle';x.fillText(l,24,40);m.userData.p.tex.needsUpdate=true;}
+    function hideB(){bMs.forEach(function(m){m.visible=false;});}
+    function showB(items){hideB();items.forEach(function(it,i){if(i>=8)return;var m=bMs[i];m.visible=true;m.position.y=.34-i*.11;dBtn(m,it.label,it.col,it.bg);m.userData.cb=it.cb;});}
+    function showXP(txt){var x=xpFP.ctx;x.clearRect(0,0,320,80);x.fillStyle='#3ce68a';x.font='700 34px Anton, sans-serif';x.textAlign='center';x.fillText(txt,160,48);xpFP.tex.needsUpdate=true;xpFM.material.opacity=1;xpA={t:0};}
+    function showBigBanner(title,sub,color){var bb=document.getElementById('bigBanner'),bt=document.getElementById('bbTitle'),bs=document.getElementById('bbSub');if(!bb||!bt||!bs)return;bb.style.display='none';void bb.offsetWidth;bt.textContent=title;bt.style.color=color||'#2fb0ff';bs.textContent=sub||'';bb.style.display='flex';clearTimeout(bb._hideT);bb._hideT=setTimeout(function(){bb.style.display='none';},2800);}
+    function allowedZ(){if(!guestAllowedZones)return ZONES;return ZONES.filter(function(z){return guestAllowedZones.indexOf(z.id)!==-1;});}
+
+    function playScenes(scenes,onDone,idx){ idx=idx||0; if(idx>=scenes.length){ if(onDone)onDone(); return; } var s=scenes[idx]; hideB(); cBg(cP.ctx,800,540,(s.speaker?s.speaker+' — ':'')+s.title,s.sub||'',s.body,s.color||'#2fb0ff'); cP.tex.needsUpdate=true; showB([{label:s.btn||'CONTINUER',col:s.color||'#2fb0ff',cb:function(){playScenes(scenes,onDone,idx+1);}}]); }
+    function bossIntroScene(z,boss){ var sp = (z.id==='elec') ? 'EVA' : 'AEGIS'; return {title:"ALERTE BOSS",speaker:sp,body:boss.icon+" "+boss.name+" garde ce territoire.\n\n"+boss.name+" gronde : "+boss.quote,color:z.color,btn:"ENGAGER LE COMBAT"}; }
+    function bossVictoryScene(z){ var boss=BOSSES[z.id]; return {title:"VICTOIRE",speaker:boss?boss.name:'',body:(boss?boss.icon+' '+boss.name+" est vaincu. ":'')+z.icon+' '+z.name+" est securisee.",color:'#3ce68a',btn:"CONTINUER"}; }
+    function grandFinaleScenes(){ return [{title:"LE GARDIEN",speaker:"AEGIS",body:"Il ne reste plus qu'un adversaire.",color:'#ff4d5e',btn:"AFFRONTER"},{title:"LE GARDIEN S'EFFONDRE",speaker:"",body:"Apres un dernier combat.",color:'#9b4bff',btn:"CONTINUER"},{title:"LA VERITE",speaker:"NEXUS",body:"Vous avez vaincu... un simple programme.",color:'#ff4d5e',btn:"CONTINUER"},{title:"FIN",speaker:"AEGIS",body:"Operation Genesis est terminee.",color:'#2fb0ff',btn:"BRAVO, AGENT"}]; }
+    function showHomeBtn(show){ var b=document.getElementById('homeBtn'); if(b)b.style.display=show?'block':'none'; }
+    function renderZones(){ if(!lsg('cq_intro_'+profile) && totalDone()===0){ lss('cq_intro_'+profile,'1'); playScenes(INTRO_SCENES, renderZonesReal); return; } renderZonesReal(); }
+    function renderZonesReal(){ showHomeBtn(false);qLocked=false; cBg(cP.ctx,800,540,'CARTE DE BATTLE ISLE',null,'Choisis ta prochaine cible.','#2fb0ff'); cP.tex.needsUpdate=true; var zones=allowedZ(); var items=zones.map(function(z){ var nd=z.weeks.filter(function(w){return myDone[z.id+'_'+w.n];}).length; var beaten=nd===z.weeks.length; return{label:(beaten?'👑 ':z.icon+' ')+z.name+' ('+nd+'/'+z.weeks.length+')',col:z.color,bg:beaten?'rgba(60,230,138,.05)':null,cb:function(){renderWeeks(z);}};}); items.push({label:'🎒 CAMP DE BASE',col:'#c6ff3d',cb:renderBase}); showB(items); }
+    function renderBase(){ showHomeBtn(true); cBg(cP.ctx,800,540,'CAMP DE BASE',null,null,'#c6ff3d'); cP.tex.needsUpdate=true; showB([{label:'← Carte',col:'#8fa3d9',cb:renderZones},{label:'QUETES BONUS',col:'#ff9d1f',cb:renderBQ},{label:'SCENARIOS',col:'#ff3fb0',cb:renderSC},{label:'EQUIPEMENT',col:'#2fb0ff',cb:renderInventory}]); }
+    function renderInventory(){ showHomeBtn(true); cBg(cP.ctx,800,540,'EQUIPEMENT',null,null,'#2fb0ff'); cP.tex.needsUpdate=true; var unlocked=unlockedGadgets().map(function(g){return g.id;}); var items=[{label:'← Camp de base',col:'#8fa3d9',cb:renderBase}]; GADGETS.forEach(function(g){ var got=unlocked.indexOf(g.id)!==-1; items.push({label:(got?'✅ ':'🔒 ')+g.icon+' '+g.name,col:got?'#3ce68a':'#4a5a96',bg:got?'rgba(60,230,138,.05)':null,cb:function(){ cBg(cP.ctx,800,540,g.icon+' '+g.name,got?'Debloque':'Verrouille',got?g.desc:'Continue ta progression.',got?'#3ce68a':'#4a5a96'); cP.tex.needsUpdate=true; showB([{label:'← Equipement',col:'#8fa3d9',cb:renderInventory}]); }});}); showB(items); }
+    function renderWeeks(z,pg){ showHomeBtn(true); var PAGESIZE=5, p=pg||0, totalPages=Math.ceil(z.weeks.length/PAGESIZE), sl=z.weeks.slice(p*PAGESIZE,p*PAGESIZE+PAGESIZE); var boss=BOSSES[z.id], lastN=z.weeks[z.weeks.length-1].n; var otherWeeksDone=z.weeks.filter(function(ww){return ww.n!==lastN;}).every(function(ww){return myDone[z.id+'_'+ww.n];}); cBg(cP.ctx,800,540,z.icon+' '+z.name,z.desc,null,z.color); cP.tex.needsUpdate=true; var items=[{label:'← Zones',col:'#8fa3d9',cb:renderZones}]; sl.forEach(function(w){ var d=!!myDone[z.id+'_'+w.n]; if(w.n===lastN && boss){ if(d){ items.push({label:'✅ '+boss.name,col:'#3ce68a',cb:function(){renderCours(z,w);}}); }else if(otherWeeksDone){ items.push({label:'⚔️ BOSS · '+boss.name,col:z.color,bg:'rgba(255,157,31,.06)',cb:function(){playScenes([bossIntroScene(z,boss)],function(){renderCours(z,w);});}}); }else{ items.push({label:'🔒 BOSS',col:'#4a5a96',cb:function(){ cBg(cP.ctx,800,540,'ACCES VERROUILLE',null,'Termine les autres missions.',col:'#4a5a96'); cP.tex.needsUpdate=true; showB([{label:'← Missions',col:'#8fa3d9',cb:function(){renderWeeks(z,p);}}]); }}); } }else{ items.push({label:(d?'✅ ':'▸ ')+'S'+w.n+' '+w.title,col:d?'#3ce68a':z.color,bg:d?'rgba(60,230,138,.05)':null,cb:function(){renderCours(z,w);}}); } }); if(p<totalPages-1)items.push({label:'→ Suivant',col:'#ff9d1f',cb:function(){renderWeeks(z,p+1);}}); if(p>0)items.push({label:'← Precedent',col:'#8fa3d9',cb:function(){renderWeeks(z,p-1);}}); showB(items); }
+    async function renderCours(z,w){showHomeBtn(true);qLocked=true;hideB();coursPage=0;var boss=BOSSES[z.id],isBossWeek=(w.n===z.weeks[z.weeks.length-1].n);cBg(cP.ctx,800,540,'BRIEFING · '+w.title.toUpperCase(),z.name+' S'+w.n,(isBossWeek&&boss?'...':'AEGIS prepare le briefing...'),z.color);cP.tex.needsUpdate=true;try{var res=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+groqKey},body:JSON.stringify({model:MODEL,max_tokens:400,temperature:0.7,messages:[{role:'system',content:'Prof cyber. Cours 180 mots lyceen STI2D. TEXTE UNIQUEMENT.'},{role:'user',content:'Zone:'+z.name+' S'+w.n+':'+w.title+' '+w.sub+' Sujets:'+w.topics.join(',')}]})});if(!res.ok)throw new Error('HTTP '+res.status);coursText=(await res.json()).choices[0].message.content||'Indisponible.';}catch(e){coursText='Objectifs: '+w.topics.join(' · ')+' ('+e.message+')';}showCoursPage(z,w);}
+    function showCoursPage(z,w){var words=coursText.split(' '),pp=60,pages=Math.ceil(words.length/pp),body=words.slice(coursPage*pp,(coursPage+1)*pp).join(' '),done=!!myDone[z.id+'_'+w.n];cBg(cP.ctx,800,540,'BRIEFING · '+w.title.toUpperCase(),z.name+' S'+w.n+(done?' OK':''),body,z.color,coursPage,pages);cP.tex.needsUpdate=true;var items=[];if(coursPage>0)items.push({label:'← Page prec.',col:'#8fa3d9',cb:function(){coursPage--;showCoursPage(z,w);}});if(coursPage<pages-1)items.push({label:'→ Page suiv.',col:z.color,cb:function(){coursPage++;showCoursPage(z,w);}});items.push({label:'LANCER LA MISSION',col:'#2fb0ff',bg:'rgba(47,176,255,.08)',cb:function(){loadQ(z,w);}});items.push({label:'← Missions',col:'#8fa3d9',cb:function(){renderWeeks(z);}});showB(items);qLocked=false;}
+    async function loadQ(z,w){showHomeBtn(true);if(guestXpCap&&myXp>=guestXpCap){cBg(cP.ctx,800,540,'XP LIMITE',null,'Max atteint.','#ff9d1f');cP.tex.needsUpdate=true;showB([{label:'← Zones',col:'#8fa3d9',cb:renderZones}]);return;}qLocked=true;hideB();var boss=BOSSES[z.id],isBossWeek=(w.n===z.weeks[z.weeks.length-1].n);var missionTitle=(isBossWeek&&boss)?(boss.icon+' COMBAT'):('MISSION S'+w.n);cBg(cP.ctx,800,540,missionTitle,z.name,'Analyse...',z.color);cP.tex.needsUpdate=true;try{var sysPrompt="Tu es AEGIS. Cree une mission courte en francais pour lyceen STI2D, en scenario d'action. JSON: {\"intro\":\"...\",\"q\":\"...\",\"opts\":[\"...\",\"...\",\"...\",\"...\"],\"ok\":0,\"exp\":\"...\"}";var userPrompt='Zone:'+z.name+' S'+w.n+':'+w.title+' Sujets:'+w.topics.join(',')+(isBossWeek&&boss?' -- BOSS '+boss.name+'.':'');var res=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+groqKey},body:JSON.stringify({model:MODEL,max_tokens:420,temperature:0.8,messages:[{role:'system',content:sysPrompt},{role:'user',content:userPrompt}]})});if(!res.ok){var er=await res.json().catch(function(){return {};});throw new Error('HTTP '+res.status+': '+(er.error&&er.error.message||'Verifiez la cle Groq'));}var raw=(await res.json()).choices[0].message.content||'';var d=JSON.parse(raw.replace(/```json|```/g,'').trim());var done=!!myDone[z.id+'_'+w.n];var subLine=(isBossWeek&&boss?boss.name+' — ':'')+z.name+' S'+w.n+(done?' OK':'');cBg(cP.ctx,800,540,missionTitle,subLine,(d.intro?d.intro+'\n\n':'')+d.q,z.color);cP.tex.needsUpdate=true;var L=['A','B','C','D'];var opts=[{label:'← Briefing',col:'#8fa3d9',cb:function(){renderCours(z,w);}}];d.opts.slice(0,4).forEach(function(o,i){opts.push({label:L[i]+' '+o,col:z.color,cb:(function(ii){return function(){onAns(ii,d.ok,d.exp,z,w);};})(i)});});showB(opts);qLocked=false;}catch(e){cBg(cP.ctx,800,540,'ERREUR',null,e.message,'#ff4d5e');cP.tex.needsUpdate=true;showB([{label:'← Missions',col:'#8fa3d9',cb:function(){renderWeeks(z);}}]);qLocked=false;}}
+    async function onAns(idx,ok,exp,z,w){ if(qLocked)return; qLocked=true; var correct=idx===ok, already=!!myDone[z.id+'_'+w.n]; var beforeTotal=totalDone(); var zoneWasComplete=z.weeks.every(function(ww){return myDone[z.id+'_'+ww.n];}); var beforeGadgetIds=unlockedGadgets().map(function(g){return g.id;}); var xpBefore=myXp; cBg(cP.ctx,800,540,correct?'MISSION REUSSIE':'MISSION ECHOUEE',z.name+' S'+w.n,exp,correct?'#3ce68a':'#ff4d5e'); cP.tex.needsUpdate=true; if(correct&&!already){ showXP('+100 XP'); updateStreak(); if(!isGuest){ await syncProg(z.id+'_'+w.n,{}); }else{ myDone[z.id+'_'+w.n]=true; myXp=calcXP(myDone,myBQ); } var afterTotal=totalDone(); var zoneNowComplete=z.weeks.every(function(ww){return myDone[z.id+'_'+ww.n];}); var newGadgets=unlockedGadgets().filter(function(g){return beforeGadgetIds.indexOf(g.id)===-1;}); var lvlBefore=levelFromXP(xpBefore), lvlAfter=levelFromXP(myXp); var isFinale=(afterTotal>=TOTAL_MISSIONS && beforeTotal<TOTAL_MISSIONS); var rewardBody='+100 XP'; if(lvlAfter>lvlBefore) rewardBody+='\nNiveau '+lvlAfter+' !'; newGadgets.forEach(function(g){ rewardBody+='\n'+g.icon+' '+g.name; }); var scenes=[{title:'MISSION REUSSIE',speaker:'',body:rewardBody,color:'#3ce68a',btn:'CONTINUER'}]; if(zoneNowComplete && !zoneWasComplete){ scenes.push(bossVictoryScene(z)); } STORY_BEATS.forEach(function(beat){ if(beforeTotal<beat.at && afterTotal>=beat.at) scenes.push(beat); }); if(isFinale){ scenes=scenes.concat(grandFinaleScenes()); } var nb=checkBQ(); if(isGuest) myXp=calcXP(myDone,myBQ); if(nb.length){ if(!isGuest){ var bqObj={}; nb.forEach(function(q){ bqObj[q.id]=true; }); await syncProg(null,bqObj); } nb.forEach(function(q){ scenes.push({title:'QUETE DEBLOQUEE',speaker:'',body:q.icon+' '+q.title+' +'+q.xp+' XP',color:'#ff9d1f',btn:'CONTINUER'}); }); } playScenes(scenes,function(){ if(isFinale){ renderZones(); } else { renderWeeks(z); } }); }else{ setTimeout(function(){ if(correct) renderWeeks(z); else loadQ(z,w); },2200); } }
+    function checkBQ(){var n=[];BQ.forEach(function(q){if(!myBQ[q.id]&&q.check()){myBQ[q.id]=true;n.push(q);}});return n;}
+    function showBQU(q){showXP('+'+q.xp+' XP');showBigBanner(q.icon+' QUETE',q.title+' +'+q.xp+' XP','#ff9d1f');cBg(cP.ctx,800,540,'QUETE',q.icon+' '+q.title,'+'+q.xp+' XP','#ff9d1f');cP.tex.needsUpdate=true;if(!isGuest)syncProg(null,{[q.id]:true});setTimeout(renderZones,3000);}
+    function renderBQ(pg){ showHomeBtn(true); var PAGESIZE=5, p=pg||0, totalPages=Math.ceil(BQ.length/PAGESIZE), sl=BQ.slice(p*PAGESIZE,p*PAGESIZE+PAGESIZE); cBg(cP.ctx,800,540,'QUETES BONUS',null,null,'#ff9d1f'); cP.tex.needsUpdate=true; var items=[{label:'← Camp de base',col:'#8fa3d9',cb:renderBase}]; sl.forEach(function(q){ var d=!!myBQ[q.id]; items.push({label:(d?'✅ ':'▸ ')+q.icon+' '+q.title+' +'+q.xp+' XP',col:d?'#3ce68a':'#ff9d1f',bg:d?'rgba(60,230,138,.05)':null,cb:function(){ var storyTxt=q.story&&q.story.length?q.story.join('\n'):''; cBg(cP.ctx,800,540,q.icon+' '+q.title,'Quete +'+q.xp+' XP',d?(storyTxt||'Debloquee'):('Objectif...'+(storyTxt?'\n\n'+storyTxt:'')),'#ff9d1f'); cP.tex.needsUpdate=true; showB([{label:'← Quetes',col:'#8fa3d9',cb:function(){renderBQ(p);}}].concat(d?[]:[{label:'Verifier',col:'#ff9d1f',cb:function(){var r=checkBQ();r.length?showBQU(r[0]):renderBQ(p);}}])); }}); }); if(p<totalPages-1)items.push({label:'→ Suite',col:'#c6ff3d',cb:function(){renderBQ(p+1);}}); if(p>0)items.push({label:'← Precedent',col:'#8fa3d9',cb:function(){renderBQ(p-1);}}); showB(items); }
+    function renderSC(){showHomeBtn(true);cBg(cP.ctx,800,540,'SCENARIOS',null,null,'#ff3fb0');cP.tex.needsUpdate=true;var items=[{label:'← Camp de base',col:'#8fa3d9',cb:renderBase}];SC.forEach(function(s){var d=!!myBQ[s.id];items.push({label:(d?'✅ ':'▸ ')+s.icon+' '+s.title+' +'+s.xp+' XP',col:d?'#3ce68a':'#ff3fb0',bg:d?'rgba(60,230,138,.05)':null,cb:function(){loadSC(s);}});});showB(items);}
+    async function loadSC(s){qLocked=true;hideB();cBg(cP.ctx,800,540,s.icon+' '+s.title,'Scenario','Generation...','#ff3fb0');cP.tex.needsUpdate=true;try{var res=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+groqKey},body:JSON.stringify({model:MODEL,max_tokens:400,temperature:0.85,messages:[{role:'system',content:'QCM cyber gaming. JSON: {"intro":"1 phrase","q":"...","opts":["...","...","...","..."],"ok":0,"exp":"..."}'},{role:'user',content:'Scenario:'+s.title+' Contexte:'+s.desc+' Theme:'+s.topic}]})});if(!res.ok)throw new Error('HTTP '+res.status);var raw=(await res.json()).choices[0].message.content||'';var d=JSON.parse(raw.replace(/```json|```/g,'').trim());cBg(cP.ctx,800,540,s.icon+' '+s.title,d.intro,d.q,'#ff3fb0');cP.tex.needsUpdate=true;var L=['A','B','C','D'];var opts=[{label:'← Scenarios',col:'#8fa3d9',cb:renderSC}];d.opts.slice(0,4).forEach(function(o,i){opts.push({label:L[i]+' '+o,col:'#ff3fb0',cb:(function(ii){return function(){onSC(ii,d.ok,d.exp,s);};})(i)});});showB(opts);qLocked=false;}catch(e){cBg(cP.ctx,800,540,'ERREUR',null,e.message,'#ff4d5e');cP.tex.needsUpdate=true;showB([{label:'← Scenarios',col:'#8fa3d9',cb:renderSC}]);qLocked=false;}}
+    async function onSC(idx,ok,exp,s){if(qLocked)return;qLocked=true;var correct=idx===ok,already=!!myBQ[s.id];cBg(cP.ctx,800,540,correct?'CORRECT !':'RATE',s.title,exp+(correct&&!already?'\n\n+'+s.xp+' XP !':''),correct?'#3ce68a':'#ff4d5e');cP.tex.needsUpdate=true;if(correct&&!already){showXP('+'+s.xp+' XP');if(!isGuest)await syncProg(null,{[s.id]:true});else{myBQ[s.id]=true;myXp=calcXP(myDone,myBQ);}if(SC.every(function(ss){return myBQ[ss.id];}))showBigBanner('🌙 SCENARIOS TERMINES',null,'#ff3fb0');}setTimeout(renderSC,2500);}
+    window.loadPlayer=async function(){if(!jbKey)return;try{var res=await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID+'/latest',{headers:{'X-Master-Key':jbKey}});if(!res.ok)throw new Error('HTTP '+res.status);var rec=(await res.json()).record||{};var e=Object.values(rec).find(function(v){return v&&(v.name||'').toLowerCase()===profile;});if(e){myDone=e.done||{};myStreak=e.streak||0;myBQ=e.bonusClaimed||{};myXp=calcXP(myDone,myBQ);}if(profile==='simon')document.getElementById('adminBtn').style.display='';}catch(e){st.textContent='JSONBin: '+e.message;}};
+    async function syncProg(dk,bqAdd){if(!jbKey||isGuest)return;try{var r=await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID+'/latest',{headers:{'X-Master-Key':jbKey}});var rec=(await r.json()).record||{};var tk=Object.keys(rec).find(function(k){return k!=='init'&&k!=='_config'&&rec[k]&&(rec[k].name||'').toLowerCase()===profile;});if(!tk){tk='p_'+Date.now();rec[tk]={name:profile.charAt(0).toUpperCase()+profile.slice(1),avatar:'🎮',xp:0,done:{},streak:myStreak,bonusClaimed:{},updatedAt:Date.now()};}if(!rec[tk].done)rec[tk].done={};if(!rec[tk].bonusClaimed)rec[tk].bonusClaimed={};if(dk){rec[tk].done[dk]=true;myDone[dk]=true;}if(bqAdd)Object.assign(rec[tk].bonusClaimed,bqAdd);rec[tk].streak=myStreak;rec[tk].updatedAt=Date.now();myXp=calcXP(myDone,rec[tk].bonusClaimed);rec[tk].xp=myXp;await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':jbKey},body:JSON.stringify(rec)});window.loadLB();}catch(e){st.style.color='#ff5c8a';st.textContent='Sync: '+e.message;}}
+    window.loadLB=async function(){try{var opts=jbKey?{headers:{'X-Master-Key':jbKey}}:{};var res=await fetch('https://api.jsonbin.io/v3/b/'+BIN_ID+'/latest',opts);if(!res.ok)return;var rec=(await res.json()).record||{};lbR=Object.entries(rec).filter(function(kv){return kv[0]!=='init'&&kv[0]!=='_config'&&kv[1]&&kv[1].name&&kv[1].type!=='guest';}).map(function(kv){var v=kv[1];return{name:v.name,xp:calcXP(v.done||{},v.bonusClaimed||{}),me:(v.name||'').toLowerCase()===profile};});lbR.sort(function(a,b){return b.xp-a.xp;});drawLB(lbP.ctx,480,280);lbP.tex.needsUpdate=true;}catch(e){}};
+    window.renderZones=renderZones; setInterval(window.loadLB,20000);
+    
+    // --- CONTRÔLES ADAPTATIFS ---
+    var yaw=0, pit=0;
+    
+    function setupJoy() {
+      var joyWrap=document.getElementById('joyWrap'),joyNub=document.getElementById('joyNub');
+      if(!joyWrap) return;
+      var joyActive=false, joyCx=0, joyCy=0, joyR=34;
+      
+      function joyStart(e){ joyActive=true; joyWrap.classList.add('active'); var r=joyWrap.getBoundingClientRect(); joyCx=r.left+r.width/2; joyCy=r.top+r.height/2; }
+      function joyMove(e){ if(!joyActive)return; var cx=e.clientX||e.touches[0].clientX, cy=e.clientY||e.touches[0].clientY; var dx=cx-joyCx,dy=cy-joyCy,d=Math.sqrt(dx*dx+dy*dy); if(d>joyR){dx=dx/d*joyR;dy=dy/d*joyR;} joyNub.style.transform='translate('+dx+'px,'+dy+'px)'; joyVec.x=dx/joyR; joyVec.y=-dy/joyR; }
+      function joyEnd(){ joyActive=false; joyWrap.classList.remove('active'); joyNub.style.transform='translate(0,0)'; joyVec.x=0; joyVec.y=0; }
+      
+      joyWrap.addEventListener('pointerdown', joyStart); joyWrap.addEventListener('touchstart', joyStart, {passive:true});
+      window.addEventListener('pointermove', joyMove); window.addEventListener('touchmove', joyMove, {passive:false});
+      window.addEventListener('pointerup', joyEnd); window.addEventListener('touchend', joyEnd);
+    }
+
+    function setupCameraPC() {
+      var drag=false, lx2=0, ly2=0;
+      var dom=rdr.domElement;
+      dom.addEventListener('pointerdown',function(e){if(rdr.xr.isPresenting)return; drag=true; lx2=e.clientX; ly2=e.clientY;});
+      window.addEventListener('pointerup',function(){drag=false;});
+      window.addEventListener('pointermove',function(e){if(!drag||rdr.xr.isPresenting)return; yaw-=(e.clientX-lx2)*.005; pit-=(e.clientY-ly2)*.004; pit=Math.max(-1,Math.min(1,pit)); lx2=e.clientX; ly2=e.clientY; cam.rotation.set(pit,yaw,0,'YXZ');});
+    }
+
+    function setupCameraMobile() {
+      var drag=false, lx2=0, ly2=0;
+      function onTouchStart(e){ if(e.touches.length===1){ drag=true; var t=e.touches[0]; lx2=t.clientX; ly2=t.clientY; } }
+      function onTouchMove(e){ if(drag && e.touches.length===1){ var t=e.touches[0]; yaw-=(t.clientX-lx2)*.005; pit-=(t.clientY-ly2)*.004; pit=Math.max(-1,Math.min(1,pit)); lx2=t.clientX; ly2=t.clientY; cam.rotation.set(pit,yaw,0,'YXZ'); e.preventDefault(); } }
+      window.addEventListener('touchstart', onTouchStart, {passive:true});
+      window.addEventListener('touchmove', onTouchMove, {passive:false});
+      window.addEventListener('touchend',function(){drag=false;});
+    }
+
+    function setupKeyboardPC() {
+      window.addEventListener('keydown', function(e){ keys[e.key.toLowerCase()] = true; if(e.key===' '){ e.preventDefault(); } });
+      window.addEventListener('keyup', function(e){ keys[e.key.toLowerCase()] = false; });
+    }
+
+    var xrS=null;
+    var vrBtn=document.getElementById('vrBtn');
+    function setupVR() {
+        vrBtn.disabled=false;
+        vrBtn.addEventListener('click', function(){ if(xrS)exitVR(); else enterVR(); });
+    }
+    async function enterVR(){ if(xrS)return; try{var s=await navigator.xr.requestSession('immersive-vr'); xrS=s; rdr.xr.setSession(s); vrBtn.textContent='Stop'; document.getElementById('joyWrap').style.display='none'; s.addEventListener('end',function(){xrS=null;vrBtn.textContent='VR'; if(DEVICE==='mobile') document.getElementById('joyWrap').style.display='block'; });}catch(e){st.textContent='VR err: '+e.message;}}
+    function exitVR(){ if(xrS)xrS.end(); }
+
+    if(DEVICE === 'vr') {
+        setupVR();
+        var handGeo=new THREE.IcosahedronGeometry(.05,0); [0,1].forEach(function(i){var c=rdr.xr.getController(i);c.add(new THREE.Mesh(handGeo,new THREE.MeshBasicMaterial({color:i===0?0xff3fb0:0x2fb0ff})));dolly.add(c);});
+    } else if (DEVICE === 'mobile') {
+        setupJoy();
+        setupCameraMobile();
+        document.getElementById('joyWrap').style.display='block';
+        document.getElementById('joyHint').style.display='block';
+    } else { 
+        setupCameraPC();
+        setupKeyboardPC();
+        document.getElementById('joyWrap').style.display='none';
+        document.getElementById('joyHint').style.display='none';
+    }
+
+    var tt=0, snapCd=0;
+    rdr.setAnimationLoop(function(){
+      tt+=.01;
+      
+      if(DEVICE === 'pc') {
+          var spd=.025;
+          var dirX = (keys['z']||keys['w'])?1:0;
+          var dirBack = (keys['s'])?1:0;
+          var dirLeft = (keys['q']||keys['a'])?1:0;
+          var dirRight = (keys['d'])?1:0;
+          var fX=-Math.sin(yaw), fZ=-Math.cos(yaw), rX=Math.cos(yaw), rZ=-Math.sin(yaw);
+          cam.position.x += (rX*(dirRight-dirLeft) + fX*(dirX-dirBack))*spd;
+          cam.position.z += (rZ*(dirRight-dirLeft) + fZ*(dirX-dirBack))*spd;
+          cam.position.x=Math.max(-4,Math.min(4,cam.position.x)); cam.position.z=Math.max(-4,Math.min(4,cam.position.z));
+      } 
+      else if (DEVICE === 'mobile') {
+          var spd=.025; var fX=-Math.sin(yaw), fZ=-Math.cos(yaw), rX=Math.cos(yaw), rZ=-Math.sin(yaw);
+          cam.position.x+=(rX*joyVec.x+fX*joyVec.y)*spd; cam.position.z+=(rZ*joyVec.x+fZ*joyVec.y)*spd;
+          cam.position.x=Math.max(-4,Math.min(4,cam.position.x)); cam.position.z=Math.max(-4,Math.min(4,cam.position.z));
+      } 
+      else if (DEVICE === 'vr' && xrS) {
+          var stkX=0,stkY=0,turnX=0; xrS.inputSources.forEach(function(src){ if(!src||!src.gamepad)return; var ax=src.gamepad.axes; if(src.handedness==='right') turnX=ax[0]||0; else{ stkX=ax[0]||0; stkY=ax[1]||0; }});
+          if(Math.abs(stkX)>.15||Math.abs(stkY)>.15){ var mvDir=new THREE.Vector3(); cam.getWorldDirection(mvDir); mvDir.y=0; mvDir.normalize(); var mvRight=new THREE.Vector3().crossVectors(mvDir,new THREE.Vector3(0,1,0)); var spdVR=.03; dolly.position.addScaledVector(mvDir,-stkY*spdVR); dolly.position.addScaledVector(mvRight,stkX*spdVR); dolly.position.x=Math.max(-4,Math.min(4,dolly.position.x)); dolly.position.z=Math.max(-4,Math.min(4,dolly.position.z));}
+          if(Math.abs(turnX)>.6&&snapCd<=0){ dolly.rotation.y-=Math.sign(turnX)*.55; snapCd=18; } if(snapCd>0)snapCd--;
+      }
+
+      // ANIMATION DU PERSONNAGE 3D
+      if(playerGroup) {
+          playerGroup.position.y = 0.1 + Math.sin(tt * 2) * 0.03;
+          playerGroup.rotation.y = yaw;
+          var newColor = new THREE.Color(SKINS[selectedSkin].color);
+          if(!playerGroup.children[1].material.color.equals(newColor)) {
+              playerGroup.children[1].material.color.copy(newColor);
+          }
+      }
+
+      rdr.render(scene,cam);
+    });
+    
+    if(profile&&groqKey&&jbKey){window.loadPlayer().then(function(){renderZones();loadLB();});}
+    else if(isGuest){renderZones();loadLB();}
+  } catch(e) { document.getElementById('loading').style.display='none'; st.style.color='#ff4d5e'; st.textContent='Erreur JS: '+e.message; console.error(e); }
+}
+
+var homeBtn=document.getElementById('homeBtn'); if(homeBtn){ homeBtn.addEventListener('click',function(){ if(typeof renderZones==='function')renderZones(); }); }
+
+(function() {
+  const swCode = `const CACHE_NAME = 'cq-battle-cache-v9'; const ASSETS = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png']; const IMMUTABLE_CDN_URLS = ['https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js','https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js']; self.addEventListener('install', (e) => { self.skipWaiting(); e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))); }); self.addEventListener('activate', (e) => { e.waitUntil( caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim()) ); }); self.addEventListener('fetch', (e) => { if (e.request.method !== 'GET') return; if (IMMUTABLE_CDN_URLS.indexOf(e.request.url) !== -1) { e.respondWith( caches.open(CACHE_NAME).then((cache) => cache.match(e.request).then((cached) => { if (cached) return cached; return fetch(e.request).then((resp) => { if (resp && resp.ok) cache.put(e.request, resp.clone()); return resp; }); }) ) ); return; } const url = new URL(e.request.url); if (url.origin !== self.location.origin) return; e.respondWith( caches.open(CACHE_NAME).then((cache) => cache.match(e.request).then((cached) => { const network = fetch(e.request).then((resp) => { if (resp && resp.ok) cache.put(e.request, resp.clone()); return resp; }).catch(() => cached); return cached || network; }) ) ); });`;
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swURL = URL.createObjectURL(blob);
+  if ('serviceWorker' in navigator) { navigator.serviceWorker.register(swURL).then(() => console.log('SW OK')).catch((err) => console.warn('SW ERR:', err)); }
+})();
+
+detectDevice().then(() => { });
+</script>
+
+<!-- Toggle VR bar -->
+<div id="vrToggleBar"><span class="vt-label">MODE</span><button class="vt-btn classic" id="classicModeBtn">Classique</button><button class="vt-btn vr-active" id="vrModeBtn">🥽 VR</button></div>
+</body>
+</html>
